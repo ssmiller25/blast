@@ -44,6 +44,9 @@ potentially k3OS or CentOS Atomic.  Eventually want to move to something configu
 * Ubiquity management (UNMS)
 * [Skydive](https://github.com/skydive-project/skydive): Might be a great network visualization tool. . . 
 * [Online Dev with Eclipse Che](https://www.eclipse.org/che/docs/che-7/introduction-to-eclipse-che/)
+* Local static page with all available management links (and services hosted by network)
+* Website for captive portal for guests
+* apt-cacher-ng: Mostly for existing Debian/Ubuntu based systems.  Might not be necessary in later builds
 
 
 Source Info:
