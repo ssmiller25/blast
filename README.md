@@ -20,8 +20,7 @@ Using Ubiquity EdgerouterX and Ubiquity Unifi wireless for core network needs (D
 
 ### Server
 
-* **Ubuntu server:**  Primarily a dependency on a KVM layer for Kubevirt.  Will be looking into 
-potentially k3OS or CentOS Atomic.  Eventually want to move to something configurable through the 
+* **k3os:**  [Readme for k3os](https://github.com/rancher/k3os#sample-configyaml) indicates kvm is available (shown in example), so going to try to use this as basis 
 [Kubernetes Cluster API](https://github.com/kubernetes-sigs/cluster-api)
 * **k3s:**  Looking for lightweight, and want to be able to include Raspberry Pi's in my architecture. 
 * **[Matchbox](https://github.com/poseidon/matchbox):** PXE Provisioning.  Would be nice to be install-less, but for now it'll just host the Ubuntu Network boot and ISOs for network installation
