@@ -9,6 +9,36 @@ that supports cluster API, and then focus on that mechanism for bootstrap config
 
 ## Physical Server Installation - Master
 
+* Boot x86 system from k3os
+* Login with rancher
+* Run installation command
+
+```sh
+sudo k3os install
+```
+
+** 1 - Install Server
+** Config system with cloud-init file: N
+** Authorize Github users with SSH: N
+** Password to rancher: my usual root password
+** Configure Wifi?: N
+** Run as server or agent:  1 - Server
+** Token or cluster secret: Leave blank
+** Format Disk: Y
+
+Once booted, put k3s-master/config.yaml into the /var/lib/rancher/k3os/ directory on the server
+
+*TODO:* Bootstrap parameters to pull config from github and/or local repo directly?
+
+# Initial Master Configuration
+
+* Configure k3s
+* Install Longhorn
+* Install apt-cacher-ng
+* Install Matchbox
+
+## Older - Physical Server Installation - Master
+
 * Boot x86 system from Ubuntu Server LiveCD
 * Installation Language: English
 * Update new installer if prompted
@@ -23,9 +53,3 @@ that supports cluster API, and then focus on that mechanism for bootstrap config
 
 *DONE:*  Below still to do
 
-# Initial Master Configuration
-
-* Install k3s
-* Install Longhorn
-* Install apt-cacher-ng
-* Install Matchbox
