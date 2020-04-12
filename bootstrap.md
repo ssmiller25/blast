@@ -7,9 +7,26 @@ that supports cluster API, and then focus on that mechanism for bootstrap config
 *Note:* Physical, in this context, refers to either an actual "physical" box, or a virtual machine that supports nested virtualization
 *Note2:* Does not assume an air-gapped installation.  May attempt to build such a thing later
 
-## Physical Server Installation - Master
 
-* Boot x86 system from k3os
+## Automated Server Installation - Master
+
+* Boot x86 system form k3os ISO image
+* At the grub boot prompt, press e to edit the first option.  On the line that **starts** with Linux
+  * Edit k3os.mode and change to "install"
+  * Add the following to the **end** of the line that starts with "linux"
+
+```
+k3os.install.device=/dev/sda k3os.install.config_url=https://raw.githubusercontent.com/ssmiller25/immutablehomelab/master/k3s-master/config.yaml
+```
+* Press Ctrl-X to boot
+* Confirm formatting the disk.
+* System will install and reboot automatically
+
+Note: Only the users specified in the config.yaml will be able to access the "rancher" user on the system
+
+## Manual Server Installation - Master
+
+* Boot x86 system from k3os ISO Image
 * Login with rancher
 * Run installation command
 
