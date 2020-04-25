@@ -1,0 +1,17 @@
+# Needed for local DNS for matchbox ingress (well, not NEEDED, but plays into long-range plan a little better)
+
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: pihole
+  # Need to deploy to kube-system for controller to work - according to https://rancher.com/docs/k3s/latest/en/helm/
+  namespace: kube-system
+spec:
+  chart: pihole
+  repo: https://mojo2600.github.io/pihole-kubernetes/
+  targetNamespace: homelab-svc
+  valuesContent: |-
+    dnsmasq:
+      customDnsEntries:
+        - address=/earth.r15cookie.lan/172.18.110.10/
+        - address=/station9.r15cookie.lan/172.18.110.11/

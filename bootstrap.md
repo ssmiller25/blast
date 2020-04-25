@@ -24,7 +24,12 @@ k3os.install.device=/dev/sda k3os.install.config_url=https://raw.githubuserconte
 
 Note: Only the users specified in the config.yaml will be able to access the "rancher" user on the system
 
-## Manual Server Installation - Master
+## Phase 1 - Master Bootstrap
+
+Apply deploy/k3s-master-phase1/ configs to master.  Should be enough to allow user
+interaction and to permit bootstraping additional nodes.
+
+## OLD/DONOTUSE Manual Server Installation - Master
 
 * Boot x86 system from k3os ISO Image
 * Login with rancher

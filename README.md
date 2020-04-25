@@ -24,6 +24,7 @@ Using Ubiquity EdgerouterX and Ubiquity Unifi wireless for core network needs (D
 [Kubernetes Cluster API](https://github.com/kubernetes-sigs/cluster-api)
 * **k3s:**  Looking for lightweight, and want to be able to include Raspberry Pi's in my architecture. 
 * **[Matchbox](https://github.com/poseidon/matchbox):** PXE Provisioning.  Would be nice to be install-less, but for now it'll just host the Ubuntu Network boot and ISOs for network installation
+* **[Klum](https://github.com/ibuildthecloud/klum):**  Easy way to manage users/kubeconfigs
 * **Longhorn** Distributed storage.  Would rather avoid
 * **[NFS Server](https://estl.tech/multi-writer-file-storage-on-gke-6d044ec96a46)** for RWM volumes if necessary
 * **Backup: ** Built in backup in Longhorn.   Might need to run quick NFS server, attached to USB drive, to "receive" backup. Or <https://restic.net/> could be used to get good deduplication. 
@@ -36,7 +37,7 @@ Using Ubiquity EdgerouterX and Ubiquity Unifi wireless for core network needs (D
 
 ### Applications/Resource
 * Pi-hole on Kubernetes: https://github.com/MoJo2600/pihole-kubernetes
-  * [And configure for local DNS resolution!](https://discourse.pi-hole.net/t/howto-using-pi-hole-as-lan-dns-server/533)
+  * [And configure for local DNS resolution!] - Detailed in Helm Chart details
 * Plex
 * HomeAssistant
 * General Fileserver 
