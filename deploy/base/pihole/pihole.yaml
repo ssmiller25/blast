@@ -13,8 +13,8 @@ spec:
   set:
     # k3s provides a simple service LoadBalancer, depending on that
     #  for exposing DNS to the outside world
-    serviceTCP.type = "LoadBalancer"
-    serviceUDP.type = "LoadBalancer"
+    serviceTCP.type: "LoadBalancer"
+    serviceUDP.type: "LoadBalancer"
   valuesContent: |-
     dnsmasq:
       customDnsEntries:
