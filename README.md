@@ -1,6 +1,6 @@
 # Immutable Home Lab
 
-The configuration and documentation for my immutable homelab.  
+The configuration and documentation for my immutable homelab.  Low-cost hardware leveraging [GitOps](https://www.weave.works/technologies/gitops/) to the greatest extent possible.
 
 ## Vision and Goals
 
