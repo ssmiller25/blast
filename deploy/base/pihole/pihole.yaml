@@ -3,7 +3,7 @@
 apiVersion: helm.cattle.io/v1
 kind: HelmChart
 metadata:
-  name: pihole
+  name: pihole-homelab
   # Need to deploy to kube-system for controller to work - according to https://rancher.com/docs/k3s/latest/en/helm/
   namespace: kube-system
 spec:
