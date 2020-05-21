@@ -1,10 +1,10 @@
-# Immutable Home Lab
+# Blast:  **B**are Meta**l** Immut**a**ble clu**st**er
 
-The configuration and documentation for my immutable homelab.  Low-cost hardware leveraging [GitOps](https://www.weave.works/technologies/gitops/) to the greatest extent possible.
+The configuration and documentation for an immutable, low-cost cluster leveraging [GitOps](https://www.weave.works/technologies/gitops/) to the greatest extent possible.
 
 ## Vision and Goals
 
-My vision is a homelab that I can throw random hardware at, and that hardware will be installed and 
+My vision is a cluster that I can throw random hardware at, and that hardware will be installed and 
 configured for use.  The hardware itself can be cheap, or high-end.  Broken out, other goals are:
 
 * **Stability on the network layer:**  Make sure the family can continue to work and play to the best extent possible!  
