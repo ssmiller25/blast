@@ -1,6 +1,6 @@
-# Blast:  **B**are Meta**l** Immut**a**ble clu**st**er
+# Blast
 
-The configuration and documentation for an immutable, low-cost cluster leveraging [GitOps](https://www.weave.works/technologies/gitops/) to the greatest extent possible.
+[Blast](https://acronymify.com/BLAST?q=bare+metal+immutable+cluster) (**B**are Meta**l** Immut**a**ble clu**st**er) for an immutable, low-cost cluster leveraging [GitOps](https://www.weave.works/technologies/gitops/) to the greatest extent possible.
 
 ## Vision and Goals
 
