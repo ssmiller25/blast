@@ -12,21 +12,21 @@ spec:
               serviceName: matchbox
               servicePort: 8080
 ---
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: matchbox-rpc
+#apiVersion: extensions/v1beta1
+#kind: Ingress
+#metadata:
+#  name: matchbox-rpc
 #  annotations:
 #    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
-spec:
+#spec:
 #  tls:
 #    - hosts:
 #        - matchbox-rpc.r15cookie.lan
-  rules:
-    - host: matchbox-rpc.r15cookie.lan
-      http:
-        paths:
-          - path: /
-            backend:
-              serviceName: matchbox
-              servicePort: 8081
+#  rules:
+#    - host: matchbox-rpc.r15cookie.lan
+#      http:
+#        paths:
+#          - path: /
+#            backend:
+#              serviceName: matchbox
+#              servicePort: 8081

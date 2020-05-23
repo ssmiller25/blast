@@ -3,18 +3,17 @@
 apiVersion: helm.cattle.io/v1
 kind: HelmChart
 metadata:
-  name: pihole-homelab
+  name: pihole
   # Need to deploy to kube-system for controller to work - according to https://rancher.com/docs/k3s/latest/en/helm/
   namespace: kube-system
 spec:
   chart: pihole
   repo: https://mojo2600.github.io/pihole-kubernetes/
-  targetNamespace: homelab-svc
+  targetNamespace: pihole
   set:
     # k3s provides a simple service LoadBalancer, depending on that
     #  for exposing DNS to the outside world
-    serviceTCP.type: "LoadBalancer"
-    serviceUDP.type: "LoadBalancer"
+    # Creating externally facing services through kustomize
   valuesContent: |-
     dnsmasq:
       customDnsEntries:

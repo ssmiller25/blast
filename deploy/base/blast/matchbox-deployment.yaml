@@ -37,8 +37,8 @@ spec:
               cpu: "50m"
               memory: "50Mi"
           volumeMounts:
-            - name: config
-              mountPath: /etc/matchbox
+ #           - name: config
+ #             mountPath: /etc/matchbox
             - name: data
               mountPath: /var/lib/matchbox
             - name: assets
@@ -47,9 +47,9 @@ spec:
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       volumes:
-        - name: config
-          secret:
-            secretName: matchbox-rpc
+#        - name: config
+#          secret:
+#            secretName: matchbox-rpc
         - name: data
           emptyDir: {}
         - name: assets
