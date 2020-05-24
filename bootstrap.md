@@ -42,11 +42,13 @@ for matchbox (based on <https://coreos.com/matchbox/docs/latest/deployment.html#
 
 Might also look at moving to cfssl instead of openssl
 
+Also, remember that sealedscrets's encryption **is tied to the namespace**
+
 ```sh
 cd scripts/matchbox-tls/
 export SAN=DNS.1:matchbox-rpc.r15cookie.lan,IP.1:172.18.110.81
 ./cert-gen
-kubectl create secret generic matchbox-rpc --from-file=ca.crt --from-file=server.crt --from-file=server.key
+kubectl create secret generic matchbox-rpc -n blast --from-file=ca.crt --from-file=server.crt --from-file=server.key --dry-run -o yaml | kubeseal -o yaml > ../../deploy/base/blast/matchbox-rpc-secret.yaml
 kubectl create secret generic 
 cd base/blast/
 kubectl create secret generic mysecret --dry-run --from-file=foo=/dev/stdin -o json \
