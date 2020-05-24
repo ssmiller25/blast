@@ -24,10 +24,45 @@ k3os.install.device=/dev/sda k3os.install.config_url=https://raw.githubuserconte
 
 Note: Only the users specified in the config.yaml will be able to access the "rancher" user on the system
 
-## Phase 1 - Master Bootstrap
+## Phase 1 - Master Bootstrap Secrets
+
+Ensure you have the local [Kubeseal utility](https://github.com/bitnami-labs/sealed-secrets/releases) on your system
+
+Install phase1
+
+```sh
+cd deploy/k3smaster-phase1/
+kubectl apply -k .
+```
+
+Once done, will need to generate a TLS certificate
+for matchbox (based on <https://coreos.com/matchbox/docs/latest/deployment.html#generate-tls-credentials>)
+
+**Note:** Will eventually be replaced by a far more k8s centric approach/not attached to my cluster info.  Perhaps a quick job in a light-weight container.
+
+Might also look at moving to cfssl instead of openssl
+
+```sh
+cd scripts/matchbox-tls/
+export SAN=DNS.1:matchbox-rpc.r15cookie.lan,IP.1:172.18.110.81
+./cert-gen
+kubectl create secret generic matchbox-rpc --from-file=ca.crt --from-file=server.crt --from-file=server.key
+kubectl create secret generic 
+cd base/blast/
+kubectl create secret generic mysecret --dry-run --from-file=foo=/dev/stdin -o json \
+  | kubeseal > mysealedsecret.json
+```
+
+## Phase 2 - Master Required Services
 
 Apply deploy/k3s-master-phase1/ configs to master.  Should be enough to allow user
 interaction and to permit bootstraping additional nodes.
+
+```sh
+cd deploy/k3smaster-phase2/
+kubectl apply -k .
+```
+
 
 ## OLD/DONOTUSE Manual Server Installation - Master
 

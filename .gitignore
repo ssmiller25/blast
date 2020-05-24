@@ -1,0 +1,6 @@
+# OpenSSL generated keys/certs
+*crt
+*key
+index.txt*
+serial*
+scripts/matchbox-tls/newcerts/
