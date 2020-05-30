@@ -1,10 +1,14 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-# Avoiding the use of kustomize namespace, due to
-# helmcharts HAVING to be deployed in kube-system
+namespace: pihole
 
 resources: 
 - ns.yaml
-- pihole.yaml
+# TODO - move secret to SealedSecret (this is a generic password for now)
+- secret.yaml
+- configmap.yaml
+- deployment.yaml
+
 - service.yaml
+- service-external.yaml
