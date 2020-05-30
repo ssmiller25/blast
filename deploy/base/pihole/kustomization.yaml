@@ -5,8 +5,10 @@ namespace: pihole
 
 resources: 
 - ns.yaml
-- deployment.yaml
-# TODO - move secret to SealedSecret (this is a gernic password for now)
+# TODO - move secret to SealedSecret (this is a generic password for now)
 - secret.yaml
+- configmap.yaml
+- deployment.yaml
+
 - service.yaml
 - service-external.yaml

@@ -14,17 +14,17 @@ spec:
     release: pihole
   type: LoadBalancer
 ---
-  apiVersion: v1
-  kind: Service
-  metadata:
-    name: pihole-external-tcp
-    namespace: pihole
-  spec:
-    ports:
-    - port: 53
-      protocol: TCP
-      targetPort: dns
-    selector:
-      app: pihole
-      release: pihole
-    type: LoadBalancer
+apiVersion: v1
+kind: Service
+metadata:
+  name: pihole-external-tcp
+  namespace: pihole
+spec:
+  ports:
+  - port: 53
+    protocol: TCP
+    targetPort: dns
+  selector:
+    app: pihole
+    release: pihole
+  type: LoadBalancer
