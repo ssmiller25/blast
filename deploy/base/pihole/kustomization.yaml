@@ -3,12 +3,16 @@ kind: Kustomization
 
 namespace: pihole
 
+configMapGenerator:
+  - name: pihole-custom-dnsmasq
+    files:
+    - configmap/02-custom.conf
+    - configmap/addn-hosts
+
 resources: 
 - ns.yaml
 # TODO - move secret to SealedSecret (this is a generic password for now)
 - secret.yaml
-- configmap.yaml
 - deployment.yaml
-
 - service.yaml
 - service-external.yaml
