@@ -5,7 +5,6 @@ namespace: blast
 
 resources: 
 - ns.yaml 
-- dnsmasq.yaml
 - matchbox-rpc-secret.yaml
 - matchbox-deployment.yaml
 - matchbox-service.yaml
