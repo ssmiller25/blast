@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dnsmasq
+spec:
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 1
+  selector:
+      matchLabels:
+        name: dnsmasq
+  template:
+    metadata:
+      labels:
+        name: dnsmasq
+        app: blast
+    spec:
+      # From https://kubernetes.io/blog/2018/10/02/building-a-network-bootable-server-farm-for-kubernetes-with-ltsp/
+      hostNetwork: true
+      containers:
+        - name: dnsmasq
+          image: quay.io/poseidon/dnsmasq:latest
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            capabilities:
+              add: ["NET_ADMIN"]
+          args:
+            - -k
+            # If running full DHCP
+            #- --dhcp-range=172.18.110.91,172.18.110.95
+            # If running Proxy DHCP (only PXE).  IP should be where
+            #  dnsmasq is running
+            - --dhcp-range=172.18.110.5,proxy
+            - --enable-tftp
+            - --tftp-root=/var/lib/tftpboot
+            - --dhcp-match=set:bios,option:client-arch,0
+            - --dhcp-boot=tag:bios,undionly.kpxe
+            - --dhcp-match=set:efi32,option:client-arch,6
+            - --dhcp-boot=tag:efi32,ipxe.efi
+            - --dhcp-match=set:efibc,option:client-arch,7
+            - --dhcp-boot=tag:efibc,ipxe.efi
+            - --dhcp-match=set:efi64,option:client-arch,9
+            - --dhcp-boot=tag:efi64,ipxe.efi
+            - --dhcp-userclass=set:ipxe,iPXE
+            - --dhcp-boot=tag:ipxe,http://matchbox.r15cookie.lan:8080/boot.ipxe
+            - --address=/matchbox.r15cookie.lan/172.18.110.81 
+            - --log-queries
+            - --log-dhcp
+            - --log-facility=-
+          ports:
+            - name: tftp
+              containerPort: 69
+            #- name: dns
+            #  containerPort: 53
+            - name: dhcp
+              containerPort: 67
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "50Mi"
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
