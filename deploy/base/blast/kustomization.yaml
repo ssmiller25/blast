@@ -9,3 +9,4 @@ resources:
 - matchbox-deployment.yaml
 - matchbox-service.yaml
 - matchbox-ingress.yaml
+- dnsmasq.yaml
