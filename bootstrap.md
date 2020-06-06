@@ -58,11 +58,30 @@ kubectl create secret generic mysecret --dry-run --from-file=foo=/dev/stdin -o j
 ## Phase 2 - Master Required Services
 
 Apply deploy/k3s-master-phase1/ configs to master.  Should be enough to allow user
-interaction and to permit bootstraping additional nodes.
+interaction and to permit bootstraping additional nodes.  )
 
 ```sh
 cd deploy/k3smaster-phase2/
 kubectl apply -k .
+```
+
+
+## Matchbox - Prep Images
+
+*TODO* Move to some sort of startup/bootstrap container - or somehow better integrated into system
+Also meet to move matchbox container to using soemthing like hostDir for a LITTLE perssitent before storage layer up.
+
+Inspired by (https://github.com/rancher/k3os/issues/56#issuecomment-557799651
+Also by https://github.com/leigh-j/k3os-ipxe/blob/master/boot.ipxe 
+Also...do I need matchbox.  Should I just you plain nginx container?
+
+  - Looks like images themsevles expect to be in assets...so going with that
+  - In container, /var/lib/matchbox/assets
+```sh
+wget https://github.com/rancher/k3os/releases/download/v0.10.2/sha256sum-amd64.txt
+wget https://github.com/rancher/k3os/releases/download/v0.10.2/k3os-vmlinuz-amd64
+wget https://github.com/rancher/k3os/releases/download/v0.10.2/k3os-initrd-amd64
+wget https://github.com/rancher/k3os/releases/download/v0.10.2/k3os-amd64.iso
 ```
 
 
