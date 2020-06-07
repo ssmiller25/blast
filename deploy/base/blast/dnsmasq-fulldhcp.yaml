@@ -27,11 +27,8 @@ spec:
               add: ["NET_ADMIN"]
           args:
             - -k
-            # If running full DHCP
-            #- --dhcp-range=172.18.110.91,172.18.110.95
-            # If running Proxy DHCP (only PXE).  IP should be where
-            #  dnsmasq is running
-            - --dhcp-range=172.18.110.5,proxy
+             If running full DHCP
+            - --dhcp-range=172.18.110.91,172.18.110.95
             - --enable-tftp
             - --tftp-root=/var/lib/tftpboot
             - --dhcp-match=set:bios,option:client-arch,0
@@ -43,8 +40,7 @@ spec:
             - --dhcp-match=set:efi64,option:client-arch,9
             - --dhcp-boot=tag:efi64,ipxe.efi
             - --dhcp-userclass=set:ipxe,iPXE
-            - --dhcp-boot=tag:ipxe,http://matchbox.r15cookie.lan/boot.ipxe
-            - --pxe-prompt="Matchbox"
+            - --dhcp-boot=tag:ipxe,http://matchbox.r15cookie.lan:8080/boot.ipxe
             - --address=/matchbox.r15cookie.lan/172.18.110.81 
             - --log-queries
             - --log-dhcp
