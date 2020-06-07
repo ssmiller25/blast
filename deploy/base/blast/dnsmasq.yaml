@@ -44,6 +44,7 @@ spec:
             - --dhcp-boot=tag:efi64,ipxe.efi
             - --dhcp-userclass=set:ipxe,iPXE
             - --dhcp-boot=tag:ipxe,http://matchbox.r15cookie.lan:8080/boot.ipxe
+            - --pxe-prompt="Matchbox"
             - --address=/matchbox.r15cookie.lan/172.18.110.81 
             - --log-queries
             - --log-dhcp
