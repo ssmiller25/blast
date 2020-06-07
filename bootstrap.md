@@ -78,12 +78,15 @@ Also...do I need matchbox.  Should I just you plain nginx container?
   - Looks like images themsevles expect to be in assets...so going with that
   - In container, /var/lib/matchbox/assets
 ```sh
+mkdir /var/lib/matchbox/assets/k3os-v0.10.2; cd /var/lib/matchbox/assets/k3os-v0.10.2
 wget https://github.com/rancher/k3os/releases/download/v0.10.2/sha256sum-amd64.txt
 wget https://github.com/rancher/k3os/releases/download/v0.10.2/k3os-vmlinuz-amd64
 wget https://github.com/rancher/k3os/releases/download/v0.10.2/k3os-initrd-amd64
 wget https://github.com/rancher/k3os/releases/download/v0.10.2/k3os-amd64.iso
 ```
-
+  - Using <https://github.com/poseidon/matchbox/tree/master/examples> as an example for json configs.  Eventually
+    will wrap into a configmap of some sort...
+    - profiles/k3os.json (of my own creation)
 
 ## OLD/DONOTUSE Manual Server Installation - Master
 
