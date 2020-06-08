@@ -23,21 +23,23 @@ Using Ubiquity EdgerouterX and Ubiquity Unifi wireless for core network needs (D
 * **k3os:**  [Readme for k3os](https://github.com/rancher/k3os#sample-configyaml) indicates kvm is available (shown in example), so going to try to use this as basis 
 [Kubernetes Cluster API](https://github.com/kubernetes-sigs/cluster-api)
 * **k3s:**  Looking for lightweight, and want to be able to include Raspberry Pi's in my architecture. 
-* **[Matchbox](https://github.com/poseidon/matchbox):** PXE Provisioning.  Would be nice to be install-less, but for now it'll just host the Ubuntu Network boot and ISOs for network installation
+* **[Matchbox](https://github.com/poseidon/matchbox):** PXE Provisioning for k3os 
 * **[Klum](https://github.com/ibuildthecloud/klum):**  Easy way to manage users/kubeconfigs
-* **Longhorn** Distributed storage.  Would rather avoid
+* **Storage**
+  * **Longhorn** Distributed storage.  Would rather avoid centralized NAS/storage for primary storage
+  * **hostdir** for large or IO intentenstive storage.  Backup would have to be one-off jobs.
 * **[NFS Server](https://estl.tech/multi-writer-file-storage-on-gke-6d044ec96a46)** for RWM volumes if necessary
-* **Backup: ** Built in backup in Longhorn.   Might need to run quick NFS server, attached to USB drive, to "receive" backup. Or <https://restic.net/> could be used to get good deduplication. 
+* **Backup:** Built in backup in Longhorn.   Might need to run quick NFS server, attached to USB drive, to "receive" backup. Or <https://restic.net/> could be used to get good deduplication. 
 * **Kube-virt** for virtualization outside of docker/linux
 * GitOps workflow
   * Gitea for version control of local manifests
   * [Harbor](https://github.com/goharbor/harbor) for local docker images, including [pass through configuration](https://github.com/goharbor/harbor/blob/master/contrib/Configure_mirror.md)
-  * Flux for deployment
-  * Tekton for workflow/job needs
+  * [Gitops Engine](https://github.com/argoproj/gitops-engine) for deployment.  Still early, but future direction of Flux and ArgoCD
+  * [Tekton](https://github.com/tektoncd/pipeline) for workflow/job needs
 
 ### Applications/Resource
 * Pi-hole on Kubernetes: https://github.com/MoJo2600/pihole-kubernetes
-  * [And configure for local DNS resolution!] - Detailed in Helm Chart details
+  * Configured for Local DNS resolution
 * Plex
 * HomeAssistant
 * General Fileserver 
