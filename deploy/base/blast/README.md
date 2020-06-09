@@ -28,3 +28,6 @@ The build in iPXE system didn't appear to work with Matchbox's changed iPXE.  To
 dhcp
 chain http://matchbox.r15cookie.lan/ipxe
 ```
+## Notes
+
+- [Matchbox Concepts](https://matchbox.psdn.io/matchbox/)
