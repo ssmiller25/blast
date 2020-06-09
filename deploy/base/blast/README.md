@@ -15,3 +15,16 @@ set service dns forwarding options server=/r15cookie.lan/172.18.110.81
 commit
 save
 ```
+
+## Virtualbox testing
+
+The build in iPXE system didn't appear to work with Matchbox's changed iPXE.  To get around
+
+1. Download [iPXE ISO](http://boot.ipxe.org/ipxe.iso)
+2. Boot from ISO
+3. Break into iPXE command line, and enter the following commands:
+
+```sh
+dhcp
+chain http://matchbox.r15cookie.lan/ipxe
+```

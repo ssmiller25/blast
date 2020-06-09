@@ -1,7 +1,7 @@
 {
   "id": "cybus-w1",
   "name": "cybus worker 1",
-  "profile": "k3os-install",
+  "profile": "k3os-install-agent",
   "selector": {
     "mac": "52:54:00:a1:9c:ae"
   },

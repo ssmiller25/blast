@@ -36,4 +36,6 @@ k3os:
   - 0.us.pool.ntp.org
   - 1.us.pool.ntp.org
   k3s_args:
-  - server
+  - agemt
+  environment:
+    INSTALL_K3S_SKIP_DOWNLOAD: true

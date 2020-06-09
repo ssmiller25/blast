@@ -13,5 +13,5 @@
       "k3os.install.power_off=true"
     ]
   },
-  "ignition_id": "k3os-install.yaml"
+  "ignition_id": "k3os-install-agent.yaml"
 }

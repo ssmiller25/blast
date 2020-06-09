@@ -5,7 +5,10 @@
     "kernel": "/assets/k3os-v0.10.2/k3os-vmlinuz-amd64",
     "initrd": ["/assets/k3os-v0.10.2/k3os-initrd-amd64"],
     "args": [
-      "k3os.install.iso_url=http://matchbox.r15cookie.lan/assets/k3os-v0.10.2/k3os-amd64.iso"
+      "initrd=k3os-initrd-amd64",
+      "k3os.mode=live",
+      "k3os.install.iso_url=http://matchbox.r15cookie.lan/assets/k3os-v0.10.2/k3os-amd64.iso",
+      "k3os.environment.INSTALL_K3S_SKIP_DOWNLOAD=true"
     ]
   }
 }
