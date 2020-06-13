@@ -31,7 +31,7 @@ Ensure you have the local [Kubeseal utility](https://github.com/bitnami-labs/sea
 Install phase1
 
 ```sh
-cd deploy/k3smaster-phase1/
+cd deploy/homelab/k3smaster-phase1/
 kubectl apply -k .
 ```
 
@@ -61,7 +61,7 @@ Apply deploy/k3s-master-phase1/ configs to master.  Should be enough to allow us
 interaction and to permit bootstraping additional nodes.  )
 
 ```sh
-cd deploy/k3smaster-phase2/
+cd deploy/example-homelab/k3smaster-phase2/
 kubectl apply -k .
 ```
 

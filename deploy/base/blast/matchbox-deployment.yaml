@@ -39,8 +39,12 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /etc/matchbox
-            - name: data
-              mountPath: /var/lib/matchbox
+            - name: groups
+              mountPath: /var/lib/matchbox/groups
+            - name: ignition
+              mountPath: /var/lib/matchbox/ignition
+            - name: profiles
+              mountPath: /var/lib/matchbox/profiles
             - name: assets
               mountPath: /var/lib/matchbox/assets
       dnsPolicy: ClusterFirst
@@ -50,7 +54,15 @@ spec:
         - name: config
           secret:
             secretName: matchbox-rpc
-        - name: data
-          emptyDir: {}
+        - name: groups
+          configMap:
+            name: matchbox-groups
+        - name: ignition
+          configMap:
+            name: matchbox-ignition
+        - name: profiles
+          configMap:
+            name: matchbox-profiles
         - name: assets
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: matchbox-assets
