@@ -1,0 +1,16 @@
+{
+  "id": "cybus-w1",
+  "name": "cybus worker 1",
+  "profile": "k3os-install-agent",
+  "selector": {
+    "mac": "52:54:00:a1:9c:ae"
+  },
+  "metadata": {
+    "domain_name": "node1.example.com",
+    "hostname": "cybus-w1",
+    "ip": "172.18.110.82",
+    "netmask": "255.255.255.0",
+    "gateway": "172.18.110.5",
+    "nameservers": "172.18.110.5 8.8.8.8"
+  }
+}
