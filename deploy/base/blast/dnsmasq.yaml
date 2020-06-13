@@ -31,7 +31,7 @@ spec:
             #- --dhcp-range=172.18.110.91,172.18.110.95
             # If running Proxy DHCP (only PXE).  IP should be where
             #  dnsmasq is running
-            - --dhcp-range=172.18.110.5,proxy
+            - --dhcp-range=172.18.110.0,proxy
             - --enable-tftp
             - --tftp-root=/var/lib/tftpboot
             - --dhcp-match=set:bios,option:client-arch,0
@@ -45,6 +45,10 @@ spec:
             - --dhcp-userclass=set:ipxe,iPXE
             - --dhcp-boot=tag:ipxe,http://matchbox.r15cookie.lan/boot.ipxe
             - --pxe-prompt="Matchbox"
+            - --pxe-service=tag:ipxe,x86PC,"iPXE Chain",http://matchbox.r15cookie.lan/boot.ipxe
+            - --pxe-service=tag:bios,x86PC,"BIOS PXE",undionly.kpxe
+            - --pxe-service=tag:efibc,BC_EFI,"iPXE Botstrap - BC_EFI",ipxe.efi
+            - --pxe-service=tag:efi64,X86-64_EFI,"iPXE Botstrap - X86-64",ipxe.efi
             - --address=/matchbox.r15cookie.lan/172.18.110.81 
             - --log-queries
             - --log-dhcp
