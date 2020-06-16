@@ -43,6 +43,7 @@ Using Ubiquity EdgerouterX and Ubiquity Unifi wireless for core network needs (D
 - **[NFS Server](https://estl.tech/multi-writer-file-storage-on-gke-6d044ec96a46)** for RWM volumes if necessary
 - **Backup:** Built in backup in Longhorn.   Might need to run quick NFS server, attached to USB drive, to "receive" backup. Or <https://restic.net/> could be used to get good deduplication. 
 - **Kube-virt** for virtualization outside of docker/linux
+- **[Kubebox](https://github.com/astefanutti/kubebox):**  Terminal/Web Console for k8s
 - GitOps workflow
   - Gitea for version control of local manifests
   - [Harbor](https://github.com/goharbor/harbor) for local docker images, including [pass through configuration](https://github.com/goharbor/harbor/blob/master/contrib/Configure_mirror.md)
