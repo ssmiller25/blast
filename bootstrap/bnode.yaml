@@ -25,7 +25,7 @@ write_files:
   permissions: '0755'
 run_cmd:
 - "/etc/run-cmd.sh"
-hostname: cybus-m1
+hostname: cybus-c1
 k3os:
   modules:
   - kvm

@@ -16,7 +16,7 @@ that supports cluster API, and then focus on that mechanism for bootstrap config
   * Add the following to the **end** of the line that starts with "linux"
 
 ```
-k3os.install.device=/dev/sda k3os.install.config_url=https://raw.githubusercontent.com/ssmiller25/blast/master/k3s-master/config.yaml
+k3os.install.device=/dev/sda k3os.install.config_url=https://raw.githubusercontent.com/ssmiller25/blast/master/k3s-master/bnode.yaml
 ```
 * Press Ctrl-X to boot
 * Confirm formatting the disk.
@@ -31,7 +31,7 @@ Ensure you have the local [Kubeseal utility](https://github.com/bitnami-labs/sea
 Install phase1
 
 ```sh
-cd deploy/homelab/k3smaster-phase1/
+cd deploy/example-homelab/bootstrap-phase1/
 kubectl apply -k .
 ```
 
@@ -57,11 +57,11 @@ kubectl create secret generic mysecret --dry-run --from-file=foo=/dev/stdin -o j
 
 ## Phase 2 - Master Required Services
 
-Apply deploy/k3s-master-phase1/ configs to master.  Should be enough to allow user
+Apply deploy/example-homelab/bootstrap-phase2/ configs to master.  Should be enough to allow user
 interaction and to permit bootstraping additional nodes.  )
 
 ```sh
-cd deploy/example-homelab/k3smaster-phase2/
+cd deploy/example-homelab/bootstrap-phase2/
 kubectl apply -k .
 ```
 

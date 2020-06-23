@@ -23,7 +23,6 @@ configured for use.  The hardware itself can be cheap, or high-end.  Broken out,
   - Management GUI in place
   - More app buildout/refinement
 
-
 ## Architecture
 
 ### Network
