@@ -55,7 +55,9 @@ Using Ubiquity EdgerouterX and Ubiquity Unifi wireless for core network needs (D
 - Plex
 - HomeAssistant
 - General Fileserver 
-- Ubiquity management (UNMS)
+- [Ubiquity Network Controller](https://github.com/helm/charts/tree/master/stable/unifi)
+  - From [This Docker Image](https://github.com/jacobalberty/unifi-docker) which has SSH intructions for manual adoption of APs
+- Ubiquity management (UNMS) 
 - [Skydive](https://github.com/skydive-project/skydive): Might be a great network visualization tool. . . 
 - [Online Dev with Eclipse Che](https://www.eclipse.org/che/docs/che-7/introduction-to-eclipse-che/)
 - Local static page with all available management links (and services hosted by network)
