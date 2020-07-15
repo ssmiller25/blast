@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: unifi-controller
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: unifi-controller
   ports:

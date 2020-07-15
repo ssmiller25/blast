@@ -5,6 +5,7 @@ bases:
 - ../../base/blast/
 - ../../base/pihole/
 - ../../base/klum/
+- ../../base/unifi-controller/
 - matchbox-configmap/
 
 resources:
