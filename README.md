@@ -50,13 +50,15 @@ Using Ubiquity EdgerouterX and Ubiquity Unifi wireless for core network needs (D
   - [Tekton](https://github.com/tektoncd/pipeline) for workflow/job needs
 
 ### Applications/Resource
+
 - Pi-hole on Kubernetes: https://github.com/MoJo2600/pihole-kubernetes
   - Configured for Local DNS resolution
 - Plex
 - HomeAssistant
 - General Fileserver 
 - [Ubiquity Network Controller](https://github.com/helm/charts/tree/master/stable/unifi)
-  - From [This Docker Image](https://github.com/jacobalberty/unifi-docker) which has SSH intructions for manual adoption of APs
+  - [SSH Adoption](https://github.com/jacobalberty/unifi-docker#ssh-adoption) instruction from the base image.
+  - Default SSH username/password: ubnt/ubnt (note, you can change these using unifi controller)
 - Ubiquity management (UNMS) 
 - [Skydive](https://github.com/skydive-project/skydive): Might be a great network visualization tool. . . 
 - [Online Dev with Eclipse Che](https://www.eclipse.org/che/docs/che-7/introduction-to-eclipse-che/)
