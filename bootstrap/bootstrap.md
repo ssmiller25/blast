@@ -16,7 +16,7 @@ that supports cluster API, and then focus on that mechanism for bootstrap config
   * Add the following to the **end** of the line that starts with "linux"
 
 ```
-k3os.install.device=/dev/sda k3os.install.config_url=https://raw.githubusercontent.com/ssmiller25/blast/master/k3s-master/bnode.yaml
+k3os.install.device=/dev/sda k3os.install.config_url=https://raw.githubusercontent.com/ssmiller25/blast/main/bootstrap/bnode.yaml
 ```
 * Press Ctrl-X to boot
 * Confirm formatting the disk.
