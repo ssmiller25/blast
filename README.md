@@ -5,23 +5,27 @@
 ## Vision and Goals
 
 My vision is a cluster that I can throw random hardware at, and that hardware will be installed and 
-configured for use.  The hardware itself can be cheap, or high-end.  Broken out, other goals are:
-
-- **Stability on the network layer:**  Make sure the family can continue to work and play to the best extent possible!  
-- **Backup and redundancy:**  Reduce and eliminate any single points of failure
-- **Ability to experiment with newer technologies:**  It is a home lab
-- **Ability to run older OSes for specific purposes:**  Should be able to spin up as wide a variety of OS architectures as necessary.
+configured for use.  Any class of hardware will work, as long as it runs Linux.
 
 ## Preliminary Plans
 
 - *v1.0.0* - MVP
-  - PXE Bootable Install from k3s
-  - Distributed Storage
+  - Simple secrets (Kustomize based overlays from this cluster, stored in local repo)
+  - Distributed Storage (Longhorn, RWOnce only for now)
+  - Local Repo (Gitea) - For overlay configuration, and secrets NOT stores accessibly
+  - Manual installation, with config.yaml kept in repo
+- *v1.5.0* - MVP PXE
+  - PXE Bootable Install from k3s (90% done with PXE boot, but need to make it more consumable)
+  - config.yaml in Matchbox
 - *v2.0.0* - Airgap
   - Airgap installation possible
-- *v3.0.0* - Streamlined
+- *v3.0.0* - Auto-installation
+  - Process to onboard new PXE booted hardware in an automated fashion.
+  - PROBABLY some sort of Operator on top of matchbox that auto-configurs systems
+- Appwork - Ongoing
   - Management GUI in place
   - More app buildout/refinement
+
 
 ## Architecture
 
@@ -49,6 +53,7 @@ Using Ubiquity EdgerouterX and Ubiquity Unifi wireless for core network needs (D
   - [Harbor](https://github.com/goharbor/harbor) for local docker images, including [pass through configuration](https://github.com/goharbor/harbor/blob/master/contrib/Configure_mirror.md)
   - [Gitops Engine](https://github.com/argoproj/gitops-engine) for deployment.  Still early, but future direction of Flux and ArgoCD
   - [Tekton](https://github.com/tektoncd/pipeline) for workflow/job needs
+  - [Kubevious](https://github.com/kubevious/kubevious) and/or [Kubernetes Dashboard](https://github.com/kubernetes/dashboard)
 
 ### Applications/Resource
 
