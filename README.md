@@ -10,12 +10,14 @@ configured for use.  Any class of hardware will work, as long as it runs Linux.
 ## Preliminary Plans
 
 - *v1.0.0* - MVP
-  - Simple secrets (Kustomize based overlays from this cluster, stored in local repo)
   - Distributed Storage (Longhorn, RWOnce only for now)
+  - DNS provided by dnsmasq (as part of matchbox in the future)
+  - Simple secrets (Kustomize based overlays from this cluster, stored in local repo)
   - Local Repo (Gitea) - For overlay configuration, and secrets NOT stores accessibly
-  - Manual installation, with config.yaml kept in repo
+  - Manual installation, with Node config.yaml kept in repo
 - *v1.5.0* - MVP PXE
   - PXE Bootable Install from k3s (90% done with PXE boot, but need to make it more consumable)
+    - Auto-generate SSL keys with initContainer on Matchbox, potentially
   - config.yaml in Matchbox
 - *v2.0.0* - Airgap
   - Airgap installation possible
@@ -25,7 +27,6 @@ configured for use.  Any class of hardware will work, as long as it runs Linux.
 - Appwork - Ongoing
   - Management GUI in place
   - More app buildout/refinement
-
 
 ## Architecture
 
