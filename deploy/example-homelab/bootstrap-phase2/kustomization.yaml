@@ -3,11 +3,13 @@ kind: Kustomization
 
 bases:
 - ../../base/blast/
-- ../../base/pihole/
 - ../../base/klum/
 - ../../base/unifi-controller/
 - matchbox-configmap/
 
 resources:
 - user-steve.yaml
+
+patchesStrategicMerge:
+- dnsmasq-node.yaml
 

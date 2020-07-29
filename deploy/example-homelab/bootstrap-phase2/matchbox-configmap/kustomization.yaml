@@ -9,3 +9,9 @@ bases:
 - groups/
 - ignition/
 - profiles/
+
+configMapGenerator:
+  - name: custom-dnsmasq
+    files:
+    - dnsmasq/02-custom.conf
+    - dnsmasq/addn-hosts
