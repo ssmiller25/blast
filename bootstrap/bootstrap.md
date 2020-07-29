@@ -26,7 +26,14 @@ Note: Only the users specified in the config.yaml will be able to access the "ra
 
 ## Phase 1 - Master Bootstrap Secrets
 
-Ensure you have the local [Kubeseal utility](https://github.com/bitnami-labs/sealed-secrets/releases) on your system
+Make sure your desktop environemnt is setup correctly.  [Check out arkcade](https://github.com/alexellis/arkade) to help with this:
+
+```sh
+curl -sLS https://dl.get-arkade.dev | sudo sh
+arkade get kubectl
+arkade get kubectx
+arkade get kubeseal
+```
 
 Install phase1
 
