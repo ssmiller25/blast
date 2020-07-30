@@ -74,6 +74,12 @@ Using Ubiquity EdgerouterX and Ubiquity Unifi wireless for core network needs (D
 - apt-cacher-ng: Mostly for existing Debian/Ubuntu based systems.  Might not be necessary in later builds
 
 
+### Standards
+
+- [Checkov](https://github.com/bridgecrewio/checkov) For scanning generated files and identify concerns
+- [Docker Bechmark](https://github.com/docker/docker-bench-security)
+- [Claire](https://github.com/quay/clair)
+
 Source Info:
 https://kauri.io/build-your-very-own-self-hosting-platform-with-raspberry-pi-and-kubernetes/5e1c3fdc1add0d0001dff534/c
 
