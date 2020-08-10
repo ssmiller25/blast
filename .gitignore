@@ -4,3 +4,5 @@
 index.txt*
 serial*
 scripts/matchbox-tls/newcerts/
+# Kubeconfig files
+kubeconfig*

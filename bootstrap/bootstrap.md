@@ -39,15 +39,15 @@ Setup temporary authentication with cluster-admin
 
 ```sh
 scp rancher@<ip of node>:/etc/rancher/k3s/k3s.yaml kubeconfig.blast
+# Edit server IP in kubeconfig.blast to represent cluster itself
 export KUBECONFIG=$(pwd)/kubeconfig.blast
 kubectl get nodes -o wide  # Verify nodes are working and in place
 ```
 
-
 Install phase1
 
 ```sh
-cd deploy/example-homelab/bootstrap-phase1/
+cd deploy/phase1/
 kubectl apply -k .
 ```
 
