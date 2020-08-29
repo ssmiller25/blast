@@ -58,8 +58,8 @@ spec:
           ports:
             - name: tftp
               containerPort: 69
-            #- name: dns
-            #  containerPort: 53
+            - name: dns
+              containerPort: 53
             - name: dhcp
               containerPort: 67
           resources:
