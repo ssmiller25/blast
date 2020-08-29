@@ -26,7 +26,7 @@ Note: Only the users specified in the config.yaml will be able to access the "ra
 
 ## Phase 1 - Master Bootstrap Secrets
 
-Make sure your desktop environemnt is setup correctly.  [Check out arkcade](https://github.com/alexellis/arkade) to help with this:
+Make sure your desktop environemnt is setup correctly.  [Check out arkade](https://github.com/alexellis/arkade) to help with this:
 
 ```sh
 curl -sLS https://dl.get-arkade.dev | sudo sh
