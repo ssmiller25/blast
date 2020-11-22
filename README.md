@@ -1,11 +1,10 @@
 # Blast
 
-[Blast](https://acronymify.com/BLAST?q=bare+metal+immutable+cluster) (**B**are Meta**l** Immut**a**ble clu**st**er) for an immutable, low-cost cluster leveraging [GitOps](https://www.weave.works/technologies/gitops/) to the greatest extent possible.
+[Blast](https://acronymify.com/BLAST?q=bare+metal+immutable+cluster) (**B**are Meta**l** Immut**a**ble clu**st**er) for an immutable, low-cost Kuberetes Distribution, based on [K3OS](https://github.com/rancher/k3os)/[K3S](https://github.com/rancher/k3s) and leveraging [GitOps](https://www.weave.works/technologies/gitops/) to the greatest extent possible.
 
 ## Vision and Goals
 
-My vision is a cluster that I can throw random hardware at, and that hardware will be installed and 
-configured for use.  Any class of hardware will work, as long as it runs Linux.
+My vision is a cluster that can be composed of a variety of low end systems (Intel NUC like) that will leverage distributed technologies to provided a distributed, fault tolerant system.
 
 ## Preliminary Plans
 
@@ -43,12 +42,8 @@ Using Ubiquity EdgerouterX and Ubiquity Unifi wireless for core network needs (D
 - **[Klum](https://github.com/ibuildthecloud/klum):**  Easy way to manage users/kubeconfigs
 - **Storage**
   - **Longhorn** Distributed storage.  Would rather avoid centralized NAS/storage for primary storage
-  - **hostdir** for large or IO intentenstive storage.  Backup would have to be one-off jobs.
-- **[NFS Server](https://estl.tech/multi-writer-file-storage-on-gke-6d044ec96a46)** for RWM volumes if necessary
-- **Backup:** Built in backup in Longhorn.   Might need to run quick NFS server, attached to USB drive, to "receive" backup. Or <https://restic.net/> could be used to get good deduplication. 
-- **Kubevirt** for virtualization outside of docker/linux
-  - [OKD Dashboard for KubeVirt](https://kubevirt.io/2020/OKD-web-console-install.html)
-- **[Kubebox](https://github.com/astefanutti/kubebox):**  Terminal/Web Console for k8s
+  - **hostdir** for large or IO intensive storage.  Backup would have to be one-off jobs.
+- **Backup:** Built in backup in Longhorn.   
 - GitOps workflow
   - Gitea for version control of local manifests
   - [Harbor](https://github.com/goharbor/harbor) for local docker images, including [pass through configuration](https://github.com/goharbor/harbor/blob/master/contrib/Configure_mirror.md)
