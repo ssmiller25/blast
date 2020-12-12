@@ -10,6 +10,6 @@ RUN apk --update add --no-cache make && \
   mv /root/.arkade/bin/civo /usr/local/bin/
 
 # Dasel
-RUN curl -s https://api.github.com/repos/tomwright/dasel/releases/latest | grep browser_download_url | grep linux_amd64 | cut -d '"' -f 4 | wget -qi - && mv dasel_linux_amd64 dasel && \
+RUN curl -s https://api.github.com/repos/tomwright/dasel/releases/latest | grep browser_download_url | grep linux_amd64 | cut -d '"' -f 4 | xargs curl -LO && mv dasel_linux_amd64 dasel && \
 chmod +x dasel && \
 mv ./dasel /usr/local/bin/dasel
