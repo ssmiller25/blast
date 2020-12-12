@@ -78,3 +78,17 @@ Using Ubiquity EdgerouterX and Ubiquity Unifi wireless for core network needs (D
 Source Info:
 https://kauri.io/build-your-very-own-self-hosting-platform-with-raspberry-pi-and-kubernetes/5e1c3fdc1add0d0001dff534/c
 
+## Development
+
+Make sure to grab submodules when cloning:
+
+```sh
+git clone --recurse-submodules git@github.com:ssmiller25/blast.git
+```
+
+or if one forgot...
+
+```sh
+git submodule init
+git submodule update
+```

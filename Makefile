@@ -2,7 +2,7 @@ currentepoch := $(shell date +%s)
 latestepoch := $(shell docker image ls | grep r15cookieblog | grep -v latest | awk ' { print $$2; } ' | sort -n | tail -n 1)
 
 DOCKER_REPO="quay.io/ssmiller25"
-DOCKER_BUILD=ansible-rt blast-rt
+DOCKER_BUILD=docker-ansible-alpine blast-rt
 
 
 .PHONY: build
