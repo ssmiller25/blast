@@ -6,11 +6,19 @@ DOCKER_BUILD=docker-ansible-alpine blast-rt
 
 
 .PHONY: build
-build: 
-	@for docker_build in $(DOCKER_BUILD); do \
-		docker build $${docker_build}/ -t $(DOCKER_REPO)/$${docker_build}:${currentepoch}; \
-		docker tag $(DOCKER_REPO)/$${docker_build}:${currentepoch} $(DOCKER_REPO)/$${docker_build}:latest; \
-	done
+build: build-blast-rt build-ansible-rt
+
+.PHONY: build-ansible-rt
+build-ansible-rt:
+	docker build docker-ansible-alpine/ -t $(DOCKER_REPO)/docker-ansible-alpine:${currentepoch}; \
+	docker tag $(DOCKER_REPO)/docker-ansible-alpine:${currentepoch} $(DOCKER_REPO)/docker-ansible-alpine:latest; \
+
+
+
+.PHONY: build-blast-rt
+build-blast-rt:
+	docker build blast-rt/ -t $(DOCKER_REPO)/blast-rt:${currentepoch}; \
+	docker tag $(DOCKER_REPO)/blast-rt:${currentepoch} $(DOCKER_REPO)/blast-rt:latest; \
 	
 
 .PHONY: run
