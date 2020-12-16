@@ -10,7 +10,11 @@ build: build-blast-rt build-ansible-rt
 
 .PHONY: build-ansible-rt
 build-ansible-rt:
-	docker build docker-ansible-alpine/ -t $(DOCKER_REPO)/docker-ansible-alpine:${currentepoch}; \
+	docker build docker-ansible-alpine/ \
+	--build-arg ANSIBLE_LINT_VERSION=4.3.7 \
+	--build-arg ANSIBLE_VERSION=2.10.3 \
+	--build-arg MITOGEN_VERSION=0.2.9 \
+	-t $(DOCKER_REPO)/docker-ansible-alpine:${currentepoch}; \
 	docker tag $(DOCKER_REPO)/docker-ansible-alpine:${currentepoch} $(DOCKER_REPO)/docker-ansible-alpine:latest; \
 
 
