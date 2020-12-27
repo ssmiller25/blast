@@ -11,13 +11,13 @@ build: build-blast-rt build-ansible-rt
 
 .PHONY: build-ansible-rt
 build-ansible-rt:
-	docker build ansible-rt/ -t $(DOCKER_REPO)/ansible-rt:$(current-ansible-epoch); \
-	docker tag $(DOCKER_REPO)/ansible-rt:$(current-ansible-epoch) $(DOCKER_REPO)/ansible-rt:latest; \
+	docker build ansible-rt/ -t $(DOCKER_REPO)/ansible-rt:$(currentepoch); \
+	docker tag $(DOCKER_REPO)/ansible-rt:$(currentepoch) $(DOCKER_REPO)/ansible-rt:latest; \
 
 .PHONY: build-blast-rt
 build-blast-rt:
-	docker build blast-rt/ -t $(DOCKER_REPO)/blast-rt:$(current-blast-epoch); \
-	docker tag $(DOCKER_REPO)/blast-rt:$(current-blast-epoch) $(DOCKER_REPO)/blast-rt:latest; \
+	docker build blast-rt/ -t $(DOCKER_REPO)/blast-rt:$(currentepoch); \
+	docker tag $(DOCKER_REPO)/blast-rt:$(currentepoch) $(DOCKER_REPO)/blast-rt:latest; \
 	
 
 #.PHONY: run
