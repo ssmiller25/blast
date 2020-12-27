@@ -2,7 +2,6 @@ currentepoch := $(shell date +%s)
 latestepoch := $(shell docker image ls | grep r15cookieblog | grep -v latest | awk ' { print $$2; } ' | sort -n | tail -n 1)
 
 DOCKER_REPO="quay.io/ssmiller25"
-DOCKER_BUILD=docker-ansible-alpine blast-rt
 
 
 .PHONY: build
@@ -10,10 +9,8 @@ build: build-blast-rt build-ansible-rt
 
 .PHONY: build-ansible-rt
 build-ansible-rt:
-	docker build docker-ansible-alpine/ -t $(DOCKER_REPO)/docker-ansible-alpine:${currentepoch}; \
-	docker tag $(DOCKER_REPO)/docker-ansible-alpine:${currentepoch} $(DOCKER_REPO)/docker-ansible-alpine:latest; \
-
-
+	docker build ansible-rt/ -t $(DOCKER_REPO)/ansible-rt:${currentepoch}; \
+	docker tag $(DOCKER_REPO)/ansible-rt:${currentepoch} $(DOCKER_REPO)/ansible-rt:latest; \
 
 .PHONY: build-blast-rt
 build-blast-rt:
@@ -21,15 +18,15 @@ build-blast-rt:
 	docker tag $(DOCKER_REPO)/blast-rt:${currentepoch} $(DOCKER_REPO)/blast-rt:latest; \
 	
 
-.PHONY: run
-run:
-	@docker run -d --rm -p 8080:80 --name r15cookieblog ssmiller25/r15cookieblog:latest 
-	@echo "Local running.  Go to http://localhost:8080/ to view"
+#.PHONY: run
+#run:
+#	@docker run -d --rm -p 8080:80 --name r15cookieblog ssmiller25/r15cookieblog:latest 
+#	@echo "Local running.  Go to http://localhost:8080/ to view"
 
-.PHONY: stop
-stop:
-	@echo "Stopping r15cookieblog - should shelf-cleanup"
-	@docker stop r15cookieblog
+#.PHONY: stop
+#stop:
+#	@echo "Stopping r15cookieblog - should shelf-cleanup"
+#	@docker stop r15cookieblog
 
 .PHONY: push
 push:
