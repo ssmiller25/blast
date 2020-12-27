@@ -1,5 +1,7 @@
 currentepoch := $(shell date +%s)
-latestepoch := $(shell docker image ls | grep r15cookieblog | grep -v latest | awk ' { print $$2; } ' | sort -n | tail -n 1)
+latest-ansible-epoch := $(shell docker image ls | grep ansible-rt | grep -v latest | awk ' { print $$2; } ' | sort -n | tail -n 1)
+latest-blast-epoch := $(shell docker image ls | grep ansible-rt | grep -v latest | awk ' { print $$2; } ' | sort -n | tail -n 1)
+
 
 DOCKER_REPO="quay.io/ssmiller25"
 DOCKER_BUILD=docker-ansible-alpine blast-rt
@@ -14,8 +16,8 @@ build-ansible-rt:
 	--build-arg ANSIBLE_LINT_VERSION=4.3.7 \
 	--build-arg ANSIBLE_VERSION=2.10.3 \
 	--build-arg MITOGEN_VERSION=0.2.9 \
-	-t $(DOCKER_REPO)/docker-ansible-alpine:${currentepoch}; \
-	docker tag $(DOCKER_REPO)/docker-ansible-alpine:${currentepoch} $(DOCKER_REPO)/docker-ansible-alpine:latest; \
+	-t $(DOCKER_REPO)/ansible-rt:${currentepoch}; \
+	docker tag $(DOCKER_REPO)/ansible-rt:${currentepoch} $(DOCKER_REPO)/ansible-rt:latest; \
 
 
 
@@ -37,8 +39,10 @@ stop:
 
 .PHONY: push
 push:
-	@docker push ssmiller25/r15cookieblog:$(latestepoch)
-	@docker push ssmiller25/r15cookieblog:latest
+	@docker push $(DOCKER_REPO)/ansible-rt:${latest-ansible-epoch}
+	@docker push $(DOCKER_REPO)/ansible-rt:latest
+	@docker push $(DOCKER_REPO)/blast-rt:${latest-blast-epoch}
+	@docker push $(DOCKER_REPO)/blast-rt:latest
 
 
 .PHONY: civo-up
