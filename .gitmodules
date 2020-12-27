@@ -1,3 +1,0 @@
-[submodule "docker-ansible-alpine"]
-	path = docker-ansible-alpine
-	url = https://github.com/ssmiller25/docker-ansible-alpine.git

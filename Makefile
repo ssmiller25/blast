@@ -4,7 +4,6 @@ latest-blast-epoch := $(shell docker image ls | grep ansible-rt | grep -v latest
 
 
 DOCKER_REPO="quay.io/ssmiller25"
-DOCKER_BUILD=docker-ansible-alpine blast-rt
 
 
 .PHONY: build
@@ -12,30 +11,24 @@ build: build-blast-rt build-ansible-rt
 
 .PHONY: build-ansible-rt
 build-ansible-rt:
-	docker build docker-ansible-alpine/ \
-	--build-arg ANSIBLE_LINT_VERSION=4.3.7 \
-	--build-arg ANSIBLE_VERSION=2.10.3 \
-	--build-arg MITOGEN_VERSION=0.2.9 \
-	-t $(DOCKER_REPO)/ansible-rt:${currentepoch}; \
-	docker tag $(DOCKER_REPO)/ansible-rt:${currentepoch} $(DOCKER_REPO)/ansible-rt:latest; \
-
-
+	docker build ansible-rt/ -t $(DOCKER_REPO)/ansible-rt:$(current-ansible-epoch); \
+	docker tag $(DOCKER_REPO)/ansible-rt:$(current-ansible-epoch) $(DOCKER_REPO)/ansible-rt:latest; \
 
 .PHONY: build-blast-rt
 build-blast-rt:
-	docker build blast-rt/ -t $(DOCKER_REPO)/blast-rt:${currentepoch}; \
-	docker tag $(DOCKER_REPO)/blast-rt:${currentepoch} $(DOCKER_REPO)/blast-rt:latest; \
+	docker build blast-rt/ -t $(DOCKER_REPO)/blast-rt:$(current-blast-epoch); \
+	docker tag $(DOCKER_REPO)/blast-rt:$(current-blast-epoch) $(DOCKER_REPO)/blast-rt:latest; \
 	
 
-.PHONY: run
-run:
-	@docker run -d --rm -p 8080:80 --name r15cookieblog ssmiller25/r15cookieblog:latest 
-	@echo "Local running.  Go to http://localhost:8080/ to view"
+#.PHONY: run
+#run:
+#	@docker run -d --rm -p 8080:80 --name r15cookieblog ssmiller25/r15cookieblog:latest 
+#	@echo "Local running.  Go to http://localhost:8080/ to view"
 
-.PHONY: stop
-stop:
-	@echo "Stopping r15cookieblog - should shelf-cleanup"
-	@docker stop r15cookieblog
+#.PHONY: stop
+#stop:
+#	@echo "Stopping r15cookieblog - should shelf-cleanup"
+#	@docker stop r15cookieblog
 
 .PHONY: push
 push:
