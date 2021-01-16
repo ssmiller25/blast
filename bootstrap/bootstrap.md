@@ -26,7 +26,7 @@ Note: Only the users specified in the config.yaml will be able to access the "ra
 
 ## Phase 1 - Master Bootstrap Secrets
 
-Make sure your desktop environemnt is setup correctly.  [Check out arkcade](https://github.com/alexellis/arkade) to help with this:
+Make sure your desktop environemnt is setup correctly.  [Check out arkade](https://github.com/alexellis/arkade) to help with this:
 
 ```sh
 curl -sLS https://dl.get-arkade.dev | sudo sh
@@ -35,12 +35,23 @@ arkade get kubectx
 arkade get kubeseal
 ```
 
+Setup temporary authentication with cluster-admin
+
+```sh
+scp rancher@<ip of node>:/etc/rancher/k3s/k3s.yaml kubeconfig.blast
+# Edit server IP in kubeconfig.blast to represent cluster itself
+export KUBECONFIG=$(pwd)/kubeconfig.blast
+kubectl get nodes -o wide  # Verify nodes are working and in place
+```
+
 Install phase1
 
 ```sh
-cd deploy/example-homelab/bootstrap-phase1/
+cd deploy/phase1/
 kubectl apply -k .
 ```
+
+Longhorn may take a while to come up.  Wait for `kubectl get all -n longhorn-system` to come back clean.
 
 Once done, will need to generate a TLS certificate
 for matchbox (based on <https://coreos.com/matchbox/docs/latest/deployment.html#generate-tls-credentials>)

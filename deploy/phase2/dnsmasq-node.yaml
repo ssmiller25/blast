@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dnsmasq
+spec:
+  template:
+    spec:
+      nodeName: cybus-c01
+      volumeMounts:
+      - mountPath: /etc/dnsmasq.d/02-custom.conf
+        name: custom-dnsmasq
+        subPath: 02-custom.conf
+      - mountPath: /etc/addn-hosts
+        name: custom-dnsmasq
+        subPath: addn-hosts
+    volumes:
+    - configMap:
+      defaultMode: 420
+      name: custom-dnsmasq
