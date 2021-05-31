@@ -2,6 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 bases:
-- ../base/sealed-secret
-- ../base/longhorn
-- ../base/klum
+- github.com/ssmiller25/blast-apps/sealed-secret?ref=v1.1.0
+- github.com/ssmiller25/blast-apps/longhorn?ref=v1.1.0
+- github.com/ssmiller25/blast-apps/klum?ref=v1.1.0
