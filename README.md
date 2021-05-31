@@ -1,6 +1,6 @@
 # Blast
 
-[Blast](https://acronymify.com/BLAST?q=bare+metal+immutable+cluster) (**B**are Meta**l** Immut**a**ble clu**st**er) for an immutable, low-cost Kuberetes Distribution, based on [K3OS](https://github.com/rancher/k3os)/[K3S](https://github.com/rancher/k3s) and leveraging [GitOps](https://www.weave.works/technologies/gitops/) to the greatest extent possible.
+[Blast](https://acronymify.com/BLAST?q=bare+metal+immutable+cluster) (**B**are Meta**l** Immut**a**ble clu**st**er) for an immutable, low-cost Kuberetes Distribution, based on [Talos](https://www.talos.dev/), [Sidero](https://www.sidero.dev/) and the [Kubernetes Cluster API](https://cluster-api.sigs.k8s.io/).
 
 ## Vision and Goals
 
