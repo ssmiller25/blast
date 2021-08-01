@@ -1,0 +1,51 @@
+# Following would be defined by upstream Makefile  Examples below
+
+version ?= 0.0.1
+release_date ?= $(shell date +%Y-%m-%d)
+upstream_image ?= "alpine:3.12"
+# If a seperate upstream build image is needed
+#upstream_build_image ?= "node:14.16.0-alpine3.12"
+image_name ?= myimage
+build_repo ?= quay.io/ssmiller25
+build_image ?= ${build_repo}/${image_name}
+run_flags ?= -d -p 1948:1948
+
+
+git_hash = $(shell git rev-parse --short -q HEAD)
+
+.PHONY: help
+help:
+# From https://stackoverflow.com/a/26339924
+	@$(MAKE) -pRrq -f $(lastword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | egrep -v -e '^[^[:alnum:]]' -e '^$@$$'
+
+.PHONY: build
+build:
+	@docker build . -t ${build_image}:${git_hash} \
+		--build-arg GIT_HASH=${git_hash} \
+		--build-arg VERSION=${version} \
+		--build-arg RELEASE_DATE=${release_date} \
+		--build-arg UPSTREAM_IMAGE=${build_repo}/${upstream_image}
+
+.PHONY: run
+run: stop
+	@docker run --rm ${run_flags} --name ${image_name} ${build_image}:${git_hash}
+
+.PHONY: stop
+stop:
+	@docker stop ${image_name} > /dev/null 2>&1 || true
+
+.PHONY: push
+push:
+	@docker tag ${build_image}:${git_hash} ${build_image}:${version}
+	@docker tag ${build_image}:${git_hash} ${build_image}:latest
+	@docker push ${build_image}:${git_hash}
+	@docker push ${build_image}:${version}
+	@docker push ${build_image}:latest
+
+# Pull and cache dependent images
+.PHONY: cache-upstream
+cache-upstream:
+	docker pull ${upstream_image}
+	docker tag ${upstream_image} $(build_repo)/${upstream_image}; \
+	docker push ${build_repo}/${upstream_image}; \
+
