@@ -11,11 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Overall
 
-- Major cleanup away from k3os/Matchbox to Talos/Sideo.  Talos more fully supports [Cluster API](https://cluster-api.sigs.k8s.io/).  Also has a [fully documented process for bootstrapping bare metal](https://www.sidero.dev/docs/v0.2/guides/bootstrapping/), a primary usecase for this cluster.
+- Mono-Repo
+- Update to Cluster-API and FluxV2 operation.  Leverage [the recommended repo layout from Flux](https://fluxcd.io/docs/guides/repository-structure/) with some additions for docker and scripts
 
-### deploy/base/*
-  
-- Moved most actual apps to [blast-apps](https://github.com/ssmiller25/blast-apps/)
+### 
 
 ## [0.1.0] - 2021-05-31
 
