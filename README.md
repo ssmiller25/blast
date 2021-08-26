@@ -18,7 +18,7 @@ Using Ubiquity EdgerouterX and Ubiquity Unifi wireless for core network needs (D
 - **[Sidero](https://www.sidero.dev/):**  Bare metal provisioning of talos
 - **[Klum](https://github.com/ibuildthecloud/klum):**  Easy way to manage users/kubeconfigs
 - **Storage** 
-  - **Longhorn** or **Rook** Distributed storage.  Would rather avoid centralized NAS/storage for primary storage
+  - **Mayastore** or **Rook** Distributed storage.  Would rather avoid centralized NAS/storage for primary storage
   - **hostdir** for large or IO intensive storage.  Backup would have to be one-off jobs.
 - **Backup:** Built in backup in Longhorn.   
 
