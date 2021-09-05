@@ -1,0 +1,113 @@
+---
+kind: ServiceAccount
+apiVersion: v1
+metadata:
+  name: observiq-agent-metadata
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+# kubernetes versions before 1.8.0 should use rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: observiq-agent-metadata
+rules:
+  - apiGroups: ["", "apps", "batch"]
+    resources:
+      - pods
+      - namespaces
+      - replicasets
+      - jobs
+      - events
+    verbs: ["get", "list", "watch"]
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: observiq-agent-metadata
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: observiq-agent-metadata
+subjects:
+  - kind: ServiceAccount
+    name: observiq-agent-metadata
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: observiq-agent
+spec:
+  selector:
+    matchLabels:
+      name: observiq-agent
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        name: observiq-agent
+    spec:
+      serviceAccountName: observiq-agent-metadata
+      tolerations:
+        - key: node-role.kubernetes.io/master
+          effect: NoSchedule
+      containers:
+        - image: observiq/observiq-agent:0.9.19-remote
+          imagePullPolicy: Always
+          name: observiq-agent
+          resources:
+            limits:
+              memory: "250Mi"
+              cpu: 250m
+            requests:
+              memory: "250Mi"
+              cpu: 100m
+          volumeMounts:
+            - mountPath: /var/log
+              name: varlog
+            - mountPath: /var/lib/docker/containers
+              name: varlibdockercontainers
+              readOnly: true
+            - mountPath: /run/log/journal
+              name: journald
+              readOnly: true
+            - mountPath: /bphome/log_agent/database/
+              name: observiq-agent-database
+              readOnly: false
+          env:
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+            - name: BP_AGENT_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+            - name: BP_CONFIGURATION_ID
+              valueFrom:
+                secretKeyRef:
+                  name: observiq-agent-secrets
+                  key: BP_CONFIGURATION_ID
+            - name: BP_AGENT_REMOTE_ENDPOINT
+              value: wss://connections.app.observiqlabs.com
+            - name: BP_AGENT_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: observiq-agent-secrets
+                  key: BP_AGENT_SECRET_KEY
+            - name: BP_AGENT_LOG_DB
+              value: /bphome/log_agent/database/log_agent.db
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      volumes:
+        - hostPath:
+            path: /var/log
+          name: varlog
+        - hostPath:
+            path: /var/lib/docker/containers
+          name: varlibdockercontainers
+        - hostPath:
+            path: /run/log/journal
+          name: journald
+        - hostPath:
+            # NOTE: This path needs to be writable on the host's filesystem.
+            path: /var/observiq-agent/database
+          name: observiq-agent-database

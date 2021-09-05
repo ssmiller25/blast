@@ -1,0 +1,107 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: pihole
+    release: pihole
+  name: pihole
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: pihole
+      release: pihole
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: pihole
+        release: pihole
+    spec:
+      containers:
+      - env:
+        - name: WEB_PORT
+          value: "80"
+        - name: VIRTUAL_HOST
+          value: pi.hole
+        - name: WEBPASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: pihole-password
+        - name: DNS1
+          value: 8.8.8.8
+        - name: DNS2
+          value: 8.8.4.4
+        image: pihole/pihole:v5.0
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 10
+          httpGet:
+            path: /admin.index.php
+            port: http
+            scheme: HTTP
+          initialDelaySeconds: 60
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: pihole
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
+        - containerPort: 53
+          name: dns
+          protocol: TCP
+        - containerPort: 53
+          name: dns-udp
+          protocol: UDP
+        - containerPort: 443
+          name: https
+          protocol: TCP
+        - containerPort: 67
+          name: client-udp
+          protocol: UDP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /admin.index.php
+            port: http
+            scheme: HTTP
+          initialDelaySeconds: 60
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        resources: {}
+        securityContext:
+          privileged: false
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /etc/pihole
+          name: config
+        - mountPath: /etc/dnsmasq.d/02-custom.conf
+          name: custom-dnsmasq
+          subPath: 02-custom.conf
+        - mountPath: /etc/addn-hosts
+          name: custom-dnsmasq
+          subPath: addn-hosts
+      dnsConfig:
+        nameservers:
+        - 127.0.0.1
+        - 8.8.8.8
+      dnsPolicy: None
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      volumes:
+      - emptyDir: {}
+        name: config
+      - configMap:
+          defaultMode: 420
+          name: pihole-custom-dnsmasq
+        name: custom-dnsmasq
