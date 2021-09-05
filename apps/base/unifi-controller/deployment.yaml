@@ -1,0 +1,50 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: unifi-controller
+  name: unifi-controller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: unifi-controller
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: unifi-controller
+    spec:
+      containers:
+      - name: unifi
+        image: jacobalberty/unifi:stable
+        env:
+          - name: TZ
+            value: "America/Detroit"
+        ports:
+          - name: http
+            containerPort: 8080
+          - name: https
+            containerPort: 8443
+          - name: stun
+            containerPort: 3478
+            protocol: UDP
+          - name: ubnt-discovery
+            containerPort: 10001
+            protocol: UDP
+        resources: {}
+        volumeMounts:
+          - name: unifi-data
+            mountPath: /unifi/data
+          - name: unifi-log
+            mountPath: /unifi/log
+      volumes:
+        - name: unifi-data
+          persistentVolumeClaim:
+            claimName: unifi-data
+        - name: unifi-log
+          persistentVolumeClaim:
+            claimName: unifi-log

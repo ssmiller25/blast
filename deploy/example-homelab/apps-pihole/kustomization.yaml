@@ -1,6 +1,0 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-
-bases:
-- github.com/ssmiller25/blast-apps/pihole?ref=v1.1.0
-

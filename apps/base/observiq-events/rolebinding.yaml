@@ -1,0 +1,11 @@
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: observiq-kube-event-collector-metadata-rolebinding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: observiq-kube-event-collector-metadata
+subjects:
+  - kind: ServiceAccount
+    name: observiq-kube-event-collector-metadata

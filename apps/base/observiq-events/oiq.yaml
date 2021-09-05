@@ -1,0 +1,120 @@
+kind: ServiceAccount
+apiVersion: v1
+metadata:
+  name: observiq-kube-event-collector-metadata
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+   name: observiq-kube-collector-persistent-volume
+spec:
+   accessModes:
+      - ReadWriteOnce
+   resources:
+      requests:
+          # We recommend this, but feel free to increase or decrease considering your use case
+          storage: 2Gi
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: observiq-kube-event-collector-metadata
+rules:
+- apiGroups: ["", "apps", "batch"]
+  resources:
+    - pods
+    - namespaces
+    - replicasets
+    - jobs
+    - events
+  verbs: ["get", "list", "watch"]
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: observiq-kube-event-collector-metadata
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: observiq-kube-event-collector-metadata
+subjects:
+  - kind: ServiceAccount
+    name: observiq-kube-event-collector-metadata
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: observiq-kube-event-collector
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: observiq-kube-event-collector
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        name: observiq-kube-event-collector
+    spec:
+      serviceAccountName: observiq-kube-event-collector-metadata
+      containers:
+        - image: observiq/observiq-agent:0.9.19-remote
+          imagePullPolicy: Always
+          name: observiq-agent
+          resources:
+            limits:
+              memory: "250Mi"
+              cpu: 250m
+            requests:
+              memory: "250Mi"
+              cpu: 100m
+          volumeMounts:
+            - mountPath: /var/log
+              name: varlog
+            - mountPath: /var/lib/docker/containers
+              name: varlibdockercontainers
+              readOnly: true
+            - mountPath: /run/log/journal
+              name: journald
+              readOnly: true
+            - mountPath: /var/lib/observiq-kube-event-collector
+              name: var-lib-observiq-kube-event-collector
+            - mountPath: /var/lib/observiq/observiq-agent/database
+              name: observiq-kube-collector-persistent-volume
+          env:
+            - name: BP_AGENT_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+            - name: BP_CONFIGURATION_ID
+              valueFrom:
+                secretKeyRef:
+                  name: observiq-agent-secrets
+                  key: BP_CONFIGURATION_ID
+            - name: BP_AGENT_REMOTE_ENDPOINT
+              value: wss://connections.app.observiqlabs.com
+            - name: BP_AGENT_LOG_DB
+              value: /var/lib/observiq/observiq-agent/log-agent.db
+            - name: BP_AGENT_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: observiq-agent-secrets
+                  key: BP_AGENT_SECRET_KEY
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      volumes:
+        - hostPath:
+            path: /var/log
+          name: varlog
+        - persistentVolumeClaim:
+            claimName: observiq-kube-collector-persistent-volume
+          name: observiq-kube-collector-persistent-volume
+        - hostPath:
+            path: /var/lib/docker/containers
+          name: varlibdockercontainers
+        - hostPath:
+            path: /run/log/journal
+          name: journald
+        - hostPath:
+            path: /var/lib/observiq-kube-event-collector
+          name: var-lib-observiq-kube-event-collector

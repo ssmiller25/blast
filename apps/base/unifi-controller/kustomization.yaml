@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: unifi-controller
+
+resources: 
+- ns.yaml
+- deployment.yaml
+- service-tcp.yaml
+- service-udp.yaml
+- pvc.yaml
+# Ingress is difficult as controller doesn't support refer proxy directly
+# Potentially working nginx config at https://gist.github.com/vidia/fbef2ee643b23848d8b24211d5860b78 
+#  But might be difficult versus just using a LoadBalancer type service
+#- ingress.yaml
