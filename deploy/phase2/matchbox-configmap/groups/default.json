@@ -1,5 +1,0 @@
-{
-  "id": "default",
-  "name": "Default bootup - just live k3os instance",
-  "profile": "k3os-live"
-}

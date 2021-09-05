@@ -12,7 +12,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Overall
 
 - Mono-Repo
-- Update to Cluster-API and FluxV2 operation.  Leverage [the recommended repo layout from Flux](https://fluxcd.io/docs/guides/repository-structure/) with some additions for docker and scripts
 
 ### 
 

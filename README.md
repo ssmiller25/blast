@@ -2,6 +2,18 @@
 
 [Blast](https://acronymify.com/BLAST?q=bare+metal+immutable+cluster) (**B**are Meta**l** Immut**a**ble clu**st**er) for an immutable, light-weight Kuberetes Distribution for edge and cloud use cases.  The goal is to leverage Kubernetes APIs and Operators/CRDs to define the local datacenter entirely through code.
 
+## Repositroy Layout
+
+Based on [FluxV2 Repository Layout](https://fluxcd.io/docs/guides/repository-structure/#monorepo) (and yes, I do realize the irony of using Flux's layout while deploying ArgoCD)
+
+
+- /clusters: Actual cluster definition in ClusterAPI, as well as ArgoCD Cluster Definitions
+- /infrastructure: Core Infrastructure that is generally installed across all clusters
+- /apps: Individual apps to be installed by end-clusters
+- /docker: Docker build and associated build tooling
+- /scripts: Scripting to support primarily the bootstraping process.  Most scripts should be embedded in docker containers.
+
+
 ## Architecture
 
 ### Network
