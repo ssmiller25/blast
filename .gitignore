@@ -22,11 +22,5 @@ hugo.linux
 
 # End of https://www.toptal.com/developers/gitignore/api/hugo,vscode
 
-# OpenSSL generated keys/certs
-*crt
-*key
-index.txt*
-serial*
-scripts/matchbox-tls/newcerts/
 # Kubeconfig files
-kubeconfig*
+*kubeconfig
