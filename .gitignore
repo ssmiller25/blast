@@ -25,3 +25,4 @@ hugo.linux
 # Kubeconfig files
 *kubeconfig
 scripts/bin
+apps/base/code-server/src
