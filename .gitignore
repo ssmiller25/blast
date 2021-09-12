@@ -24,3 +24,4 @@ hugo.linux
 
 # Kubeconfig files
 *kubeconfig
+scripts/bin

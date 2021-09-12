@@ -23,7 +23,7 @@ Should work across all network equipment.  Some focus on the Ubuiqity Lite-AP an
 ### Server
 
 - Core Infrastructure
-  - **[Kind](https://kind.sigs.k8s.io/):** For bootstraping and CI/CD purposes
+  - **[k3d](https://k3d.io):** For bootstraping and CI/CD purposes.  Choosen for minimal resources
   - **[Kubernetes Cluster API](https://cluster-api.sigs.k8s.io/):** Central way to define clusters
     - **[Talos](https://www.talos.dev/):** - Native K8S Linux Distro, will be default for all cloud providers that support it
     - **[Sidero](https://www.sidero.dev/)** - Bootstrap for on-prem hardware installs
