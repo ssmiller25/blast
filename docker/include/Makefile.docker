@@ -24,7 +24,7 @@ build:
 		--build-arg GIT_HASH=${git_hash} \
 		--build-arg VERSION=${version} \
 		--build-arg RELEASE_DATE=${release_date} \
-		--build-arg UPSTREAM_IMAGE=${build_repo}/${upstream_image}
+		--build-arg UPSTREAM_IMAGE=${upstream_image}
 
 .PHONY: run
 run: stop

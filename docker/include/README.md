@@ -13,7 +13,7 @@ A centralized place for common Makefiles that could be included in various proje
 ```makefile
 version ?= 0.0.1
 release_date ?= $(shell date +%Y-%m-%d)
-upstream_images ?= $(shell cat .upstream-images)
+upstream_image ?= alpine:3.12
 image_name ?= myimage
 build_repo ?= quay.io/ssmiller25
 build_image ?= ${build_repo}/${image_name}
