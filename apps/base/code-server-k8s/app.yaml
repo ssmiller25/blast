@@ -91,7 +91,7 @@ spec:
           mountPath: /home/coder
       containers:
         - name: code-server
-          image: quay.io/ssmiller25/k8s-code-server
+          image: quay.io/ssmiller25/k8s-code-server:924fa65
           imagePullPolicy: Always
           securityContext:
             runAsUser: 1000
