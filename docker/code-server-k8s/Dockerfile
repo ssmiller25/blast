@@ -11,15 +11,16 @@ RUN code-server --install-extension redhat.vscode-yaml \
 
 # Adding our utiltiies
 RUN sudo apt-get update \
- && apt-get install -y \
+ && sudo apt-get install -y \
     make \
     jq \
-  && rm -rf /var/lib/apt/lists/*
+  && sudo rm -rf /var/lib/apt/lists/*
 
 # Arkade and other utils
+RUN curl -sLS https://get.arkade.dev | sudo sh
 RUN for util in kubectl kustomize civo helm kim kubeseal tkn yq; do \
     arkade get ${util}; \
-    sudo mv ${HOME}/.arkade/bin/${util} /usr/local/bin/ \
+    sudo mv ${HOME}/.arkade/bin/${util} /usr/local/bin/; \
 done
 
 
