@@ -1,9 +1,8 @@
 apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
+kind: ClusterRoleBinding
 metadata:
   creationTimestamp: null
-  name: code-server-admin
-  namespace: code-server
+  name: clusterrolebinding-code-server-admin
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole

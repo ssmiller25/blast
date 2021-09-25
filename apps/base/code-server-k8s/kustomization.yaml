@@ -3,4 +3,4 @@ kind: Kustomization
 
 resources:
 - app.yaml
-- rolebinding-code-server-admin.yaml
+- clusterrolebinding-code-server.yaml

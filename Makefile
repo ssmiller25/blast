@@ -7,7 +7,7 @@ DOCKER_REPO="quay.io/ssmiller25"
 .PHONY: blast-otr
 blast-otr: scripts/bin/arkade $(BINREQ)
 	scripts/bin/k3d cluster create blast-otr --wait -c clusters/blast-otr/k3d.yaml
-	scripts/bin/k3d image import quay.io/ssmiller25/k8s-code-server:924fa65 -c blast-otr
+	scripts/bin/k3d image import quay.io/ssmiller25/k8s-code-server:3.11.1-1 -c blast-otr
 
 scripts/bin:
 	@mkdir scripts/bin

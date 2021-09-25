@@ -4,6 +4,8 @@ Docker container to manage your home directories dotfiles...in a dockerized mann
 
 Based on <https://antelo.medium.com/how-to-manage-your-dotfiles-with-git-f7aeed8adf8b>
 
+TODO: Move to <https://github.com/anishathalye/dotbot>
+
 ## Initial startup 
 
 (not dockerized at the moment - and assuming gpg keys already in place)  - and bit assumptions on how .bashrc looks...
