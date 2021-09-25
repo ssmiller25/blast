@@ -89,38 +89,9 @@ spec:
         volumeMounts:
         - name: data
           mountPath: /home/coder
-      - name: customization-codeserver
-        image: "codercom/code-server:3.11.1"
-        imagePullPolicy: IfNotPresent
-        env:
-          - name: SERVICE_URL
-            value: https://open-vsx.org/vscode/gallery
-          - name: ITEM_URL
-            value: https://open-vsx.org/vscode/item
-        command:
-          - sh
-          - -c
-          - |
-            code-server --install-extension redhat.vscode-yaml
-            code-server --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
-        volumeMounts:
-          - name: data
-            mountPath: /home/coder
-      - name: customization-k8sutil
-        image: "codercom/code-server:3.11.1"
-        imagePullPolicy: IfNotPresent
-        command:
-          - sh
-          - -c
-          - |
-            code-server --install-extension redhat.vscode-yaml
-            code-server --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
-        volumeMounts:
-          - name: data
-            mountPath: /home/coder
       containers:
         - name: code-server
-          image: "codercom/code-server:3.11.1"
+          image: quay.io/ssmiller25/k8s-code-server
           imagePullPolicy: Always
           securityContext:
             runAsUser: 1000

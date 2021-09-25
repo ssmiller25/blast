@@ -6,4 +6,4 @@ namespace: code-server
 resources:
 
 - ns.yaml
-- ../../base/code-server
+- ../../base/code-server-k8s

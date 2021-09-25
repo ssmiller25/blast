@@ -18,7 +18,8 @@ RUN sudo apt-get update \
 
 # Arkade and other utils
 RUN curl -sLS https://get.arkade.dev | sudo sh
-RUN for util in kubectl kustomize civo helm kim kubeseal tkn yq; do \
+#RUN for util in kubectl kustomize civo helm kim kubeseal tkn yq; do \
+RUN for util in kubectl kustomize civo; do \
     arkade get ${util}; \
     sudo mv ${HOME}/.arkade/bin/${util} /usr/local/bin/; \
 done
