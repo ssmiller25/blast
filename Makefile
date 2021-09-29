@@ -24,4 +24,7 @@ $(BINREQ): scripts/bin/arkade
 .PHONY: clean
 clean:
 	scripts/bin/k3d cluster delete blast-otr
+
+.PHONY: clean-all
+clean-all: clean
 	rm -rf scripts/bin
