@@ -2,52 +2,55 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: homeassistant
-  name: homeassistant
-  namespace: homeassistant
+    app: grocy
+  name: grocy
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: homeassistant
+      app: grocy
   template:
     metadata:
       labels:
-        app: homeassistant
+        app: grocy
     spec:
-      hostNetwork: true
-      dnsPolicy: ClusterFirstWithHostNet
       volumes:
-        - name: config
+        - name: grocy-storage
           persistentVolumeClaim:
-            claimName: home-assistant
+            claimName: grocy-storage
       containers:
-        - image: homeassistant/home-assistant:2021.2.3
-          name: home-assistant
+        - image: linuxserver/grocy:version-v3.0.1
+          name: grocy
+          env:
+            - name: PUID
+              value: "1004"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: "America/Chicago"
           volumeMounts:
             - mountPath: "/config"
-              name: config
+              name: grocy-storage
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: homeassistant
-  namespace: homeassistant
+  name: grocy
 spec:
   selector:
-    app: homeassistant
+    app: grocy
   ports:
     - protocol: TCP
-      port: 8123
+      port: 80
       name: http
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: home-assistant
+  name: grocy-storage
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 3Gi
+      storage: 10Gi
