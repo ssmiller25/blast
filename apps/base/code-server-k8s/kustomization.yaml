@@ -4,3 +4,6 @@ kind: Kustomization
 resources:
 - app.yaml
 - clusterrolebinding-code-server.yaml
+
+configMapGenerator:
+  - name: code-server-scripts
