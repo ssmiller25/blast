@@ -5,5 +5,8 @@ resources:
 - app.yaml
 - clusterrolebinding-code-server.yaml
 
+patchesStrategicMerge:
+  - addons.yaml
+
 configMapGenerator:
   - name: code-server-scripts
