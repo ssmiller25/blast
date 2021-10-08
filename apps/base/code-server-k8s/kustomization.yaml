@@ -10,3 +10,6 @@ patchesStrategicMerge:
 
 configMapGenerator:
   - name: code-server-scripts
+
+images:
+  - name: 

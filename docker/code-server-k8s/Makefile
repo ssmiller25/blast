@@ -1,6 +1,6 @@
-version ?= 3.11.1-1
+version ?= 3.12.0-1
 release_date ?= $(shell date +%Y-%m-%d)
-upstream_image ?= codercom/code-server:3.11.1
+upstream_image ?= codercom/code-server:3.12.0
 image_name ?= k8s-code-server
 build_repo ?= quay.io/ssmiller25
 build_image ?= ${build_repo}/${image_name}
