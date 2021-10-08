@@ -12,4 +12,6 @@ configMapGenerator:
   - name: code-server-scripts
 
 images:
-  - name: 
+  - name: codercom/code-server:3.12.0
+    newName: quay.io/ssmiller25/k8s-code-server
+    newTag: 3.12.0-1
