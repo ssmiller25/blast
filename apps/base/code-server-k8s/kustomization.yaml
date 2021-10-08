@@ -5,5 +5,15 @@ resources:
 - app.yaml
 - clusterrolebinding-code-server.yaml
 
+patchesStrategicMerge:
+  - addons.yaml
+
 configMapGenerator:
   - name: code-server-scripts
+    files:
+      - scripts/kubeconfig-create.sh
+
+images:
+  - name: codercom/code-server:3.12.0
+    newName: quay.io/ssmiller25/k8s-code-server
+    newTag: 3.12.0-1

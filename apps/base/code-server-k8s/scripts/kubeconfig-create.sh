@@ -22,6 +22,10 @@ TOKEN=$(echo ${TOKEN_DATA} | base64 -d)
 
 #echo $SECRET_NAME
 
+# Work around incase this init container is ahead of main permission initcontainer
+echo "Setting permissions"
+sudo chown -R 1000:1000 /home/coder
+
 if [ ! -d "${HOME}/.kube" ]; then
   mkdir ${HOME}/.kube
 fi
