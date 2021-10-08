@@ -1,4 +1,5 @@
 currentepoch := $(shell date +%s)
+k8s-code-server-version ?= 3.11.1-1
 BIN=scripts/bin
 BINREQ=${BIN}/k3d $(BIN)/kubectl $(BIN)/helm $(BIN)/kustomize
 
@@ -6,9 +7,9 @@ BINREQ=${BIN}/k3d $(BIN)/kubectl $(BIN)/helm $(BIN)/kustomize
 DOCKER_REPO="quay.io/ssmiller25"
 .PHONY: blast-otr
 blast-otr: $(BINREQ) scripts/bin/clusterctl
-	docker pull quay.io/ssmiller25/k8s-code-server:3.12.0-1
+	docker pull quay.io/ssmiller25/k8s-code-server:$(k8s-code-server-version)
 	scripts/bin/k3d cluster create blast-otr --wait -c clusters/blast-otr/k3d.yaml
-	scripts/bin/k3d image import quay.io/ssmiller25/k8s-code-server:3.12.0-1 -c blast-otr
+	scripts/bin/k3d image import quay.io/ssmiller25/k8s-code-server:$(k8s-code-server-version) -c blast-otr
 
 scripts/bin:
 	@mkdir scripts/bin
