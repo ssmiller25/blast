@@ -10,6 +10,8 @@ patchesStrategicMerge:
 
 configMapGenerator:
   - name: code-server-scripts
+    files:
+      - scripts/kubeconfig-create.sh
 
 images:
   - name: codercom/code-server:3.12.0
