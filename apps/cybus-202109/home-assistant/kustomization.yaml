@@ -6,3 +6,24 @@ namespace: homeassistant
 resources:
 - ../../base/home-assistant
 - ingress.yaml
+
+patches:
+  - target:
+      kind: Deployment
+      name: homeassistant
+    patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: homeassistant
+      spec:
+        template:
+          spec:
+            containers:
+              - name: home-assistant
+                env:
+                  - name: URL
+                    value: "r15cookie.lan"
+                  - name: SUBDOMAINS
+                    value: "homeassistant"
+    
