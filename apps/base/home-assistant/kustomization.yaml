@@ -1,6 +1,25 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
+namespace: homeassistant
+
+patches:
+  - target:
+      kind: Deployment
+      name: homeassistant
+    patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: homeassistant
+      spec:
+        strategy:
+          type: Recreate
+
+images:
+  - name: homeassistant/home-assistant
+    newTag: 2021.10.4
+
 resources:
 - ns.yaml
 - app.yaml

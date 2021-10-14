@@ -3,12 +3,9 @@ kind: Ingress
 metadata:
   name: homeassistant-ingress
   namespace: homeassistant
-  annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: 'websecure'
-    traefik.ingress.kubernetes.io/router.tls: 'true'
 spec:
   rules:
-    - host: ha.harmony.arkane-systems.lan
+    - host: homeassistant.r15cookie.lan
       http:
         paths:
           - pathType: Prefix
