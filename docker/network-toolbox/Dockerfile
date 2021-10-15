@@ -1,9 +1,9 @@
-FROM debian:stretch-slim
+FROM debian:bullseye-slim
 
 RUN set -eux; \
 # dangit, wireshark-common!  *shakes fist*
 	export DEBIAN_FRONTEND='noninteractive'; \
-	apt-get update; \
+  apt-get update; \
 	apt-get install -y --no-install-recommends \
 		bash-completion \
 		ca-certificates \
@@ -21,6 +21,7 @@ RUN set -eux; \
 		netcat-openbsd \
 		nmap \
 		openssh-client \
+    openssl \
 		procps \
 		rsync \
 		socat \
