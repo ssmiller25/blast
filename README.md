@@ -1,5 +1,7 @@
 # Blast
 
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
+
 [Blast](https://acronymify.com/BLAST?q=bare+metal+immutable+cluster) (**B**are Meta**l** Immut**a**ble clu**st**er) for an immutable, light-weight Kuberetes Distribution for edge and cloud use cases.  The goal is to leverage Kubernetes APIs and Operators/CRDs to define the local datacenter entirely through code.
 
 ## Repositroy Layout
