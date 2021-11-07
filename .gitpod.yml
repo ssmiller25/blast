@@ -4,3 +4,4 @@ image:
 vscode:
   extensions:
     - ms-azuretools.vscode-docker
+    - ms-kubernetes-tools.vscode-kubernetes-tools
