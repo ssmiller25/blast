@@ -1,7 +1,7 @@
 currentepoch := $(shell date +%s)
 k8s-code-server-version ?= 3.11.1-1
 BIN=scripts/bin
-BINREQ=${BIN}/k3d $(BIN)/kubectl $(BIN)/helm $(BIN)/kustomize
+BINREQ=${BIN}/k3d $(BIN)/kubectl $(BIN)/helm $(BIN)/kustomize $(BIN)/kubeseal $(BIN)/argocd
 
 
 DOCKER_REPO="quay.io/ssmiller25"
