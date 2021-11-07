@@ -4,4 +4,11 @@ FROM gitpod/workspace-full
 
 # Install Arcade
 RUN curl -sLS https://get.arkade.dev | sh && \
-    mv arkade scripts/bin/
+    sudo mv arkade /usr/local/bin/
+
+# INstall basic k8s utilities and civo
+RUN for util in civo kubectl helm kustomize; do \
+  arkade get ${util}; \
+  sudo mv .arkade/bin/${util} /usr/local/bin/; \
+  done
+
