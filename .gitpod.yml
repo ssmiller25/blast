@@ -5,3 +5,7 @@ vscode:
   extensions:
     - ms-azuretools.vscode-docker
     - ms-kubernetes-tools.vscode-kubernetes-tools
+
+tasks:
+  - name: Civo Env
+    command: scripts/gitpod-civo-env.sh
