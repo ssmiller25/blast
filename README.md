@@ -6,6 +6,14 @@
 Distribution and Cluster definitions for my personal clusters.  While the primary focus will be to be usable for bare-metal installs, cloud
 installations will be readily usable.
 
+## Gitpod One Time Setup
+
+Set the Civo API key as a Gitpod Secret
+
+```sh
+gp env CIVO_API_KEY=<api key here>
+```
+
 ## Bootstrap: blast-otr (Blast - On The Run)
 
 ```sh
