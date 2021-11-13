@@ -3,9 +3,9 @@ FROM gitpod/workspace-full
 # Ported from Makefile.  Eventually might just force the use of a docker container for prereq...
 
 # Utilities to Add
-RUN apt-get update && apt-get install -y \
+RUN sudo apt-get update && sudo apt-get install -y \
   shellcheck \
-  && rm -rf /var/lib/apt/lists/*
+  && sudo rm -rf /var/lib/apt/lists/*
 
 # Install Arcade
 RUN curl -sLS https://get.arkade.dev | sh && \
