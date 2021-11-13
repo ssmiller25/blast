@@ -4,7 +4,8 @@ FROM gitpod/workspace-full
 
 # Utilities to Add
 RUN apt-get update && apt-get install -y \
-  
+  shellcheck \
+  && rm -rf /var/lib/apt/lists/*
 
 # Install Arcade
 RUN curl -sLS https://get.arkade.dev | sh && \
