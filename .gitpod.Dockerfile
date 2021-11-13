@@ -2,6 +2,10 @@ FROM gitpod/workspace-full
 
 # Ported from Makefile.  Eventually might just force the use of a docker container for prereq...
 
+# Utilities to Add
+RUN apt-get update && apt-get install -y \
+  
+
 # Install Arcade
 RUN curl -sLS https://get.arkade.dev | sh && \
     sudo mv arkade /usr/local/bin/
