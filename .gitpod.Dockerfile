@@ -18,7 +18,7 @@ RUN for util in civo kubectl helm kustomize; do \
   done
 
 # Install starship
-brew install starship
+RUN brew install starship
 
 # starship configuration
 RUN mkdir $HOME/.config
