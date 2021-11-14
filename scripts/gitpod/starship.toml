@@ -35,4 +35,4 @@ format = '[⛵ $context \($namespace\)](dimmed green) '
 disabled = false
 
 [hostname]
-ssh_only = false
+disabled = true
