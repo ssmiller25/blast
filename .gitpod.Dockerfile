@@ -17,3 +17,5 @@ RUN for util in civo kubectl helm kustomize; do \
   sudo mv .arkade/bin/${util} /usr/local/bin/; \
   done
 
+# bashrc inclusion for custom startup commands - from https://community.gitpod.io/t/how-to-config-bashrc/957/13
+COPY scripts/gitpod-bashrc/99-kubectl.sh $HOME/.bashrc.d/
