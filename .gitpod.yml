@@ -8,4 +8,4 @@ vscode:
 
 tasks:
   - name: Civo Env
-    command: sh ./scripts/gitpod-civo-env.sh
+    command: sh ./scripts/gitpod/gitpod-civo-env.sh
