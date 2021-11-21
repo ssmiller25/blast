@@ -1,4 +1,4 @@
-version ?= 20211121-2
+version ?= 20211121-3
 release_date ?= $(shell date +%Y-%m-%d)
 # Latest on 2021/11/21
 upstream_image ?= gitpod/workspace-full@sha256:4713c384ce8be4b0cf1e413b6c860e0d18eb0718a8d9a1f16c302be6f4e697f7

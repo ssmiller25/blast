@@ -1,4 +1,4 @@
-image: quay.io/ssmiller25/gitpod-k8s:20211121-2
+image: quay.io/ssmiller25/gitpod-k8s:20211121-3
 #image:
 #  file: .gitpod.Dockerfile
 
@@ -6,7 +6,3 @@ vscode:
   extensions:
     - ms-azuretools.vscode-docker
     - ms-kubernetes-tools.vscode-kubernetes-tools
-
-tasks:
-  - name: Civo Env
-    command: sh ./scripts/gitpod/gitpod-civo-env.sh
