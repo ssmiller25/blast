@@ -1,5 +1,6 @@
-image:
-  file: .gitpod.Dockerfile
+inage: quay.io/ssmiller25/gitpod-k8s:20211121-2
+#image:
+#  file: .gitpod.Dockerfile
 
 vscode:
   extensions:
