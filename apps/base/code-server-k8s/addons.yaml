@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: code-server
+spec:
+  template:
+    spec:
+      initContainers:
+        - name: k8s-config
+          image: codercom/code-server:3.12.0
+          imagePullPolicy: IfNotPresent
+          command:
+            - sh
+            - "/scripts/kubeconfig-create.sh"
+          volumeMounts:
+            - name: data
+              mountPath: /home/coder
+            - name: scripts
+              mountPath: /scripts
+      volumes:
+        - name: scripts
+          configMap:
+            name: code-server-scripts
