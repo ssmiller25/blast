@@ -89,6 +89,9 @@ read nothing
 # Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+# Until I can get this working fully in docker/remote GUI
+brew install --cask obsidian
+
 # Main path to docker/kubernetes, this this may also install https://github.com/lima-vm/lima but may have to check.
 brew install colima
 
