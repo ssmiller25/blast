@@ -1,5 +1,3 @@
-#!/bin/sh
-
 #!/usr/bin/env bash
 
 # See https://www.r15cookie.com/info/scripting/
@@ -85,6 +83,13 @@ setup_colors
 msg "${RED}WARNING!  This script has NOT been test!${NOFORMAT}"
 msg "If you agree, press enter to continue"
 read nothing
+
+# X code and command line tools
+
+msg "${YELLOW}Manual:${NOFORMAT} Please go to https://developer.apple.com/downloads and download XCode"
+msg "Prell ${GREEN}Enter${NOFORMAT} when complete to continue"
+xcode-select --install
+
 
 # Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
