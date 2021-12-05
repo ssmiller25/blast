@@ -1,3 +1,4 @@
 {
-  "image": "quay.io/ssmiller25/gitpod-k8s:20211121-3"
+  "name": "Gitpod-k8s - 20211121-3",
+  "image": "quay.io/ssmiller25/gitpod-k8s:20211121-3",  
 } 
