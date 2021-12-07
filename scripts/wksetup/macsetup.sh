@@ -84,6 +84,12 @@ msg "${RED}WARNING!  This script has NOT been test!${NOFORMAT}"
 msg "If you agree, press enter to continue"
 read nothing
 
+# Chome
+
+
+msg "${YELLOW}Manual:${NOFORMAT} Please go to https://google.com/chrome and download/install Chrome"
+msg "Prell ${GREEN}Enter${NOFORMAT} when complete to continue"
+
 # X code and command line tools
 
 msg "${YELLOW}Manual:${NOFORMAT} Please go to https://developer.apple.com/downloads and download XCode"
