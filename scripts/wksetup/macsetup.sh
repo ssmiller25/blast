@@ -107,11 +107,16 @@ ssh-add --apple-use-keychain
 
 brew install --cask visual-studio-code
 
+
 # Main path to docker/kubernetes, this this may also install https://github.com/lima-vm/lima but may have to check.
-brew install colima
+brew install colima docker kubectl
+
 
 # Utilities I really want on the desktop
 brew install --cask iterm2
+
+# Github cli
+brew install gh
 
 # Fix paths
 sudo launchctl config user path "$(brew --prefix)/bin:${PATH}"
