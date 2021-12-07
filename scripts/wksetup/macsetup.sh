@@ -99,6 +99,9 @@ if [ ! -r $HOME/.ssh/id_rsa ]; then
   ssh-keygen  -b 4096
 fi
 
+# Add ssh to keychain
+ssh-add --apple-use-keychain
+
 # Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
