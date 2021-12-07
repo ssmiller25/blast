@@ -92,9 +92,8 @@ msg "Prell ${GREEN}Enter${NOFORMAT} when complete to continue"
 
 # X code and command line tools
 
-msg "${YELLOW}Manual:${NOFORMAT} Please go to https://developer.apple.com/downloads and download XCode"
+msg "${YELLOW}Manual:${NOFORMAT} Please go to https://developer.apple.com/downloads and download Command Line Tools for XCode"
 msg "Prell ${GREEN}Enter${NOFORMAT} when complete to continue"
-xcode-select --install
 
 
 # Homebrew
