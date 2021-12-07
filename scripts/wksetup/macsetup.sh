@@ -95,6 +95,9 @@ msg "Prell ${GREEN}Enter${NOFORMAT} when complete to continue"
 msg "${YELLOW}Manual:${NOFORMAT} Please go to https://developer.apple.com/downloads and download Command Line Tools for XCode"
 msg "Prell ${GREEN}Enter${NOFORMAT} when complete to continue"
 
+if [ ! -r $HOME/.ssh/id_rsa ]; then
+  ssh-keygen  -b 4096
+fi
 
 # Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
