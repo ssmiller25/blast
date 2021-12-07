@@ -110,4 +110,7 @@ brew install colima
 # Utilities I really want on the desktop
 brew install --cask iterm2
 
+# Fix paths
+sudo launchctl config user path "$(brew --prefix)/bin:${PATH}"
+msg "${RED}Reboot:{$NOCOLOR} to enable brew path support in Mac GUI apps"
 
