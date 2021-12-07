@@ -102,6 +102,8 @@ fi
 # Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+brew install --cask visual-studio-code
+
 # Main path to docker/kubernetes, this this may also install https://github.com/lima-vm/lima but may have to check.
 brew install colima
 
