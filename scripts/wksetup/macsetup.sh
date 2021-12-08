@@ -114,6 +114,7 @@ brew install colima docker kubectl
 
 # Utilities I really want on the desktop
 brew install --cask iterm2
+curl -L https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | bash
 
 # Github cli
 brew install gh
