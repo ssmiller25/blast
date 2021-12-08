@@ -109,7 +109,10 @@ brew install --cask visual-studio-code
 
 
 # Main path to docker/kubernetes, this this may also install https://github.com/lima-vm/lima but may have to check.
-brew install colima docker kubectl
+# TODO: Investigate colima a little harder as a replacement for Docker for Desktop - RW volume mounts seems slightly tricky
+#brew install colima docker kubectl
+
+brew install --cask docker
 
 
 # Utilities I really want on the desktop
