@@ -116,7 +116,7 @@ brew install --cask docker
 
 
 # Utilities I really want on the desktop
-brew install --cask iterm2
+brew install --cask iterm2 jq
 curl -L https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | bash
 
 # Github cli
